@@ -39,6 +39,10 @@ public class CUsuarios {
         return modelo;
     }
 
+    public MUsuarios obtenerUsuario(int id){
+        return new DAOUsuarios().obtenerUsuario(id);
+    }
+
     public DefaultTableModel mostarVistaUsuarios(){
 
         List<MVistaUsuarios> usuarios = new DAOUsuarios().obtenerVistaUsuarios();
@@ -64,7 +68,7 @@ public class CUsuarios {
         return modelo;
     }
 
-    public MUsuarios crearUsuario(MUsuarios user){
+    public int crearUsuario(MUsuarios user){
 
         return new DAOUsuarios().insertarUsuarios(user.getCategoria(),
         user.getCedula(),
@@ -75,6 +79,20 @@ public class CUsuarios {
         user.getCarrera(),
         user.getSemestre(),
         user.getEstado());
+    }
+
+    public int modificarusuario(MUsuarios user){
+        return new DAOUsuarios().actualizarUsuario(
+            user.getId(),
+            user.getCedula(),
+            user.getNombre(),
+            user.getApellido(),
+            user.getTelefono(),
+            user.getCorreo(),
+            user.getCarrera(),
+            user.getSemestre(),
+            user.getEstado(),
+            user.getCategoria());
     }
 
     public int elimiarUsuario(String idUsuario){

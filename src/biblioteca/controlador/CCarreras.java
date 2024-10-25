@@ -37,5 +37,11 @@ public class CCarreras {
         }        
         return modelo;
     }
+
+    public int crearCarrera(MCarrera carr){
+        return new DAOCarrera().insertarCarrera(carr.getCarrera());
+    }
+
+
     
 }

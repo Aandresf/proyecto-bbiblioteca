@@ -5,30 +5,33 @@ import java.util.*;
 
 public class DAOUsuarios {
 
-    public MUsuarios insertarUsuarios(int categoria, int cedula, String nombre, String apellido, String telefono, String correo, int carrera, int semestre, int estado){
+    public int insertarUsuarios(int categoria, int cedula, String nombre, String apellido, String telefono, String correo, int carrera, int semestre, int estado){
         String q = "INSERT INTO USUARIOS (CATEGORIA, CEDULA, NOMBRE, APELLIDO, TELEFONO, CORREO, CARRERA, SEMESTRE, ESTADO) VALUES ("
         + categoria +","+ cedula +",'"+ nombre +"','"+ apellido +"','"+ telefono +"','"+ correo +"',"+ carrera +","+ semestre +","+ estado +");";
 
-        if(new Database().actualizar(q)>0){
-            return new MUsuarios(categoria, cedula, nombre, apellido, telefono, correo, carrera, semestre, estado);
-        }
-        return null;
+        int i = new Database().actualizar(q);
+        
+        if(i>0){return i;}
+        return 0;
     };
 
-    public int actualizarUsuario(int cedula, String nombre, String apellido, String telefono, String correo, int carreraSemestre, int estado){
+    public int actualizarUsuario(int id, int cedula, String nombre, String apellido, String telefono, String correo, int carrera, int semestre, int estado, int categoria){
         String q = "UPDATE USUARIOS SET NOMBRE = '"+ nombre
         +"', APELLIDO = '"+ apellido
-        +"', TELEFONO = "+ telefono 
-        +", CORREO = '"+ correo 
-        +"', CURSO = "+ carreraSemestre 
+        +"', CEDULA = "+ cedula
+        +", TELEFONO = '"+ telefono 
+        +"', CORREO = '"+ correo 
+        +"', CARRERA = "+ carrera
+        +", CATEGORIA = "+ categoria
+        +", SEMESTRE = "+ semestre
         +", ESTADO = "+ estado 
-        +" WHERE CEDULA = "+ cedula +";";
+        +" WHERE ID = "+ id +";";
 
         return new Database().actualizar(q);
     };
 
-    public MUsuarios obtenerUsuario(int cedula){
-        String q = "SELECT * FROM USUARIOS WHERE CEDULA = "+ cedula +";";
+    public MUsuarios obtenerUsuario(int id){
+        String q = "SELECT * FROM USUARIOS WHERE ID = "+ id +";";
 
         List<Map> registros = new Database().ejecutar(q);
         MUsuarios usuarios = null;

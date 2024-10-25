@@ -16,6 +16,10 @@ public class MCarrera {
     public MCarrera() {
     }
 
+    public MCarrera(String carrera ) {
+        this.carrera = carrera;
+    }
+
     public MCarrera(int id, String carrera ) {
         this.carrera = carrera;
         this.id = id;

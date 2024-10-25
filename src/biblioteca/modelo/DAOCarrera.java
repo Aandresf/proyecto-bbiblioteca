@@ -45,5 +45,12 @@ public class DAOCarrera {
 
         return categorias;
     };
+
+    public int insertarCarrera(String carrera){
+        String q = "INSERT INTO CARRERAS (CARRERA) VALUES ('" + carrera + "');";
+        int i = new Database().actualizar(q);
+        if(i>0){return i;}
+        return 0;
+    };
     
 }
