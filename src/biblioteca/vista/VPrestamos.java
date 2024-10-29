@@ -529,8 +529,8 @@ public class VPrestamos extends javax.swing.JPanel {
         pnlBackground.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         btnEditarUsuario.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        btnEditarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconEditPerson.png"))); // NOI18N
-        btnEditarUsuario.setText("MODIFICAR");
+        btnEditarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconBookmarkAdd.png"))); // NOI18N
+        btnEditarUsuario.setText("RECEPCIONAR");
         btnEditarUsuario.setToolTipText("");
         btnEditarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnEditarUsuario.setIconTextGap(10);
@@ -561,11 +561,6 @@ public class VPrestamos extends javax.swing.JPanel {
         btnEliminarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnEliminarUsuarioMouseClicked(evt);
-            }
-        });
-        btnEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarUsuarioActionPerformed(evt);
             }
         });
         pnlBackground.add(btnEliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 680, 160, 40));
@@ -667,10 +662,10 @@ public class VPrestamos extends javax.swing.JPanel {
         
         // deleteUser();
         // mostrarUsuarios();
+        new VFuncionesPrestamos().eliminarPrestamo(jTable1);
+        new VFuncionesPrestamos().mostrarPrestamos(jTable1);
     }
-
-    private void btnEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {}
-
+    
     private void txfSearchInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {}
 
     private void txfSearchActionPerformed(java.awt.event.ActionEvent evt) {}

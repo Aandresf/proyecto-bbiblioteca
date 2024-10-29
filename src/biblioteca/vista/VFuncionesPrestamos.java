@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -112,5 +114,41 @@ public class VFuncionesPrestamos {
     }
     
     }
+
+    public void eliminarPrestamo(JTable tabla){
+        
+        int idPrestamo = -1; // Variable con el id del prestamo a recepcioeliminar
+        String estadoPrestamo = ""; // Variable con el estado del prestamo a eliminar
+    
+        int idLibro = -1; // Variable con el id del libro a actualizar    
+        
+        // verificamos que haya un registro seleccionado
+        if (tabla.getSelectedRow() != -1){ 
+             
+             // obtenemos los Id y el estado del modelo de la tabla, los convertimos a String
+             idPrestamo = Integer.parseInt(tabla.getModel().getValueAt(tabla.convertRowIndexToModel(tabla.getSelectedRow()), 0).toString());
+             
+             idLibro = Integer.parseInt(tabla.getModel().getValueAt(tabla.convertRowIndexToModel(tabla.getSelectedRow()), 2).toString());
+
+             estadoPrestamo = tabla.getModel().getValueAt(tabla.convertRowIndexToModel(tabla.getSelectedRow()), 8).toString();
+                          
+        }
+
+        if (idPrestamo>=0 && idLibro>=0) {
+
+            if(estadoPrestamo.equals("EN CURSO")){
+                // Actualizamos el estado del libro a disponible y sobreescribimos la variable para enviar el mensaje
+                estadoPrestamo = "Inventario: " + idLibro + " restablecido \n" +
+                     new CPrestamos().actualizarInventario(idLibro, 1) + " registros afectados. \n";
+                    } else estadoPrestamo = "";
+            
+            JOptionPane.showMessageDialog(tabla, "Prestamo: " + idPrestamo + " Eliminado \n"+
+                new CPrestamos().eliminarPrestamo(idPrestamo) + " registros afectados. \n " + estadoPrestamo);
+    
+        } else {
+            JOptionPane.showMessageDialog(tabla, "Seleccione el Prestamo a Eliminar.");
+        }
+        
+        }
     
 }

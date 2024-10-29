@@ -50,6 +50,10 @@ public class CPrestamos {
         return new DAOPrestamos().actualizarInventario(id, estado);
     }
 
+    public int eliminarPrestamo(int id){
+        return new DAOPrestamos().eliminarPrestamo(id);
+    }
+
 
     
 }
