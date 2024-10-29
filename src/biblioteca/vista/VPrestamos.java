@@ -23,7 +23,7 @@ public class VPrestamos extends javax.swing.JPanel {
 
     public VPrestamos() {
         initComponents();
-       jFrame1.setVisible(false);
+       formCreatePrestamo.setVisible(false);
     }
 
     /**
@@ -35,44 +35,46 @@ public class VPrestamos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame1 = new javax.swing.JFrame();
-        jPanel2 = new javax.swing.JPanel();
-        lblInfoCorreo = new javax.swing.JLabel();
-        btnEliminarUsuario1 = new javax.swing.JButton();
-        btnCrearUsuario1 = new javax.swing.JButton();
-        btnEditarUsuario1 = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        txfSearch2 = new javax.swing.JTextField();
-        btnSearch2 = new javax.swing.JLabel();
+        formCreatePrestamo = new javax.swing.JFrame();
+        pnlCreatePrestamo = new javax.swing.JPanel();
+        lblInfoFormCreatePrestamo = new javax.swing.JLabel();
+        btnCancelCreatePrestamo = new javax.swing.JButton();
+        btnCreatePrestamo = new javax.swing.JButton();
+        btnCleanFormPrestamo = new javax.swing.JButton();
+        pnlLib = new javax.swing.JPanel();
+        txtLibSearch = new javax.swing.JTextField();
         lblTitle1 = new javax.swing.JLabel();
-        lblId1 = new javax.swing.JLabel();
-        lblEstado1 = new javax.swing.JLabel();
+        lblLibId = new javax.swing.JLabel();
+        lblLibEstado = new javax.swing.JLabel();
         lblNombre1 = new javax.swing.JLabel();
-        txtNombre1 = new javax.swing.JTextField();
+        txtLibTitulo = new javax.swing.JTextField();
         lblCedula1 = new javax.swing.JLabel();
-        txtCedula1 = new javax.swing.JTextField();
-        txtApellido3 = new javax.swing.JTextField();
+        txtLibCodigo = new javax.swing.JTextField();
+        txtLibAutor = new javax.swing.JTextField();
         lblCategoria3 = new javax.swing.JLabel();
         lblCategoria4 = new javax.swing.JLabel();
-        txtApellido4 = new javax.swing.JTextField();
-        txtApellido5 = new javax.swing.JTextField();
+        txtLibCategoria = new javax.swing.JTextField();
+        txtLibUbicacion = new javax.swing.JTextField();
         lblCategoria5 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        txfSearch1 = new javax.swing.JTextField();
-        btnSearch1 = new javax.swing.JLabel();
+        btnLibSearch = new javax.swing.JButton();
+        lblLibInfo = new javax.swing.JLabel();
+        pnlUser = new javax.swing.JPanel();
+        txtUserSearch = new javax.swing.JTextField();
         lblTitle = new javax.swing.JLabel();
-        lblId = new javax.swing.JLabel();
-        lblEstado = new javax.swing.JLabel();
+        lblUserId = new javax.swing.JLabel();
+        lblUserEstado = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        txtUserNombre = new javax.swing.JTextField();
         lblCedula = new javax.swing.JLabel();
-        txtCedula = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
+        txtUserCedula = new javax.swing.JTextField();
+        txtUserCategoria = new javax.swing.JTextField();
         lblCategoria = new javax.swing.JLabel();
         lblCategoria1 = new javax.swing.JLabel();
-        txtApellido1 = new javax.swing.JTextField();
-        txtApellido2 = new javax.swing.JTextField();
+        txtUserCurso = new javax.swing.JTextField();
+        txtUserEstado = new javax.swing.JTextField();
         lblCategoria2 = new javax.swing.JLabel();
+        btnUserSearch = new javax.swing.JButton();
+        lblUserInfo = new javax.swing.JLabel();
         pnlMain = new javax.swing.JPanel();
         pnlBackground = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -84,146 +86,140 @@ public class VPrestamos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        jFrame1.setLocation(new java.awt.Point(782, 186));
-        jFrame1.setMinimumSize(new java.awt.Dimension(619, 680));
-        jFrame1.setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-        jFrame1.setPreferredSize(new java.awt.Dimension(619, 680));
-        jFrame1.setResizable(false);
-        jFrame1.setSize(new java.awt.Dimension(619, 680));
-        jFrame1.setType(java.awt.Window.Type.POPUP);
+        formCreatePrestamo.setLocation(new java.awt.Point(782, 186));
+        formCreatePrestamo.setMinimumSize(new java.awt.Dimension(619, 680));
+        formCreatePrestamo.setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        formCreatePrestamo.setPreferredSize(new java.awt.Dimension(619, 680));
+        formCreatePrestamo.setResizable(false);
+        formCreatePrestamo.setSize(new java.awt.Dimension(619, 680));
+        formCreatePrestamo.setType(java.awt.Window.Type.POPUP);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlCreatePrestamo.setBackground(new java.awt.Color(255, 255, 255));
+        pnlCreatePrestamo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblInfoCorreo.setForeground(new java.awt.Color(255, 0, 51));
-        lblInfoCorreo.setText("* ");
-        jPanel2.add(lblInfoCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 580, 50));
+        lblInfoFormCreatePrestamo.setForeground(new java.awt.Color(255, 0, 51));
+        lblInfoFormCreatePrestamo.setText("* ");
+        pnlCreatePrestamo.add(lblInfoFormCreatePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 580, 50));
 
-        btnEliminarUsuario1.setBackground(new java.awt.Color(102, 0, 0));
-        btnEliminarUsuario1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        btnEliminarUsuario1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconTrash.png"))); // NOI18N
-        btnEliminarUsuario1.setText("ELIMINAR");
-        btnEliminarUsuario1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnEliminarUsuario1.setIconTextGap(10);
-        btnEliminarUsuario1.setMargin(new java.awt.Insets(2, 1, 3, 14));
-        btnEliminarUsuario1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCancelCreatePrestamo.setBackground(new java.awt.Color(102, 0, 0));
+        btnCancelCreatePrestamo.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        btnCancelCreatePrestamo.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelCreatePrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCancel.png"))); // NOI18N
+        btnCancelCreatePrestamo.setText("CANCELAR");
+        btnCancelCreatePrestamo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCancelCreatePrestamo.setIconTextGap(10);
+        btnCancelCreatePrestamo.setMargin(new java.awt.Insets(2, 1, 3, 14));
+        btnCancelCreatePrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarUsuario1MouseClicked(evt);
+                btnCancelCreatePrestamoMouseClicked(evt);
             }
         });
-        jPanel2.add(btnEliminarUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 160, 40));
+        pnlCreatePrestamo.add(btnCancelCreatePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 160, 40));
 
-        btnCrearUsuario1.setBackground(new java.awt.Color(153, 255, 153));
-        btnCrearUsuario1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnCrearUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAdd.png"))); // NOI18N
-        btnCrearUsuario1.setText("CREAR USUARIO");
-        btnCrearUsuario1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCrearUsuario1.setIconTextGap(10);
-        btnCrearUsuario1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        btnCrearUsuario1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCreatePrestamo.setBackground(new java.awt.Color(153, 255, 153));
+        btnCreatePrestamo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCreatePrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAdd.png"))); // NOI18N
+        btnCreatePrestamo.setText("CREAR PRESTAMO");
+        btnCreatePrestamo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCreatePrestamo.setIconTextGap(10);
+        btnCreatePrestamo.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnCreatePrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCrearUsuario1MouseClicked(evt);
+                btnCreatePrestamoMouseClicked(evt);
             }
         });
-        btnCrearUsuario1.addActionListener(new java.awt.event.ActionListener() {
+        btnCreatePrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearUsuario1ActionPerformed(evt);
+                btnCreatePrestamoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnCrearUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, 190, 40));
+        pnlCreatePrestamo.add(btnCreatePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, 190, 40));
 
-        btnEditarUsuario1.setBackground(new java.awt.Color(230, 230, 230));
-        btnEditarUsuario1.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        btnEditarUsuario1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconEditPerson.png"))); // NOI18N
-        btnEditarUsuario1.setText("MODIFICAR");
-        btnEditarUsuario1.setToolTipText("");
-        btnEditarUsuario1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnEditarUsuario1.setIconTextGap(10);
-        btnEditarUsuario1.setMargin(new java.awt.Insets(2, 1, 3, 14));
-        btnEditarUsuario1.setMaximumSize(new java.awt.Dimension(125, 35));
-        btnEditarUsuario1.setMinimumSize(new java.awt.Dimension(125, 35));
-        btnEditarUsuario1.setPreferredSize(new java.awt.Dimension(125, 35));
-        btnEditarUsuario1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCleanFormPrestamo.setBackground(new java.awt.Color(230, 230, 230));
+        btnCleanFormPrestamo.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        btnCleanFormPrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconMop.png"))); // NOI18N
+        btnCleanFormPrestamo.setText("LIMPIAR");
+        btnCleanFormPrestamo.setToolTipText("");
+        btnCleanFormPrestamo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCleanFormPrestamo.setIconTextGap(10);
+        btnCleanFormPrestamo.setMargin(new java.awt.Insets(2, 1, 3, 14));
+        btnCleanFormPrestamo.setMaximumSize(new java.awt.Dimension(125, 35));
+        btnCleanFormPrestamo.setMinimumSize(new java.awt.Dimension(125, 35));
+        btnCleanFormPrestamo.setPreferredSize(new java.awt.Dimension(125, 35));
+        btnCleanFormPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEditarUsuario1MouseClicked(evt);
+                btnCleanFormPrestamoMouseClicked(evt);
             }
         });
-        btnEditarUsuario1.addActionListener(new java.awt.event.ActionListener() {
+        btnCleanFormPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarUsuario1ActionPerformed(evt);
+                btnCleanFormPrestamoActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEditarUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 590, 160, 40));
+        pnlCreatePrestamo.add(btnCleanFormPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 590, 160, 40));
 
-        txfSearch2.setBorder(null);
-        txfSearch2.setMargin(new java.awt.Insets(0, 10, 0, 0));
-        txfSearch2.setOpaque(true);
-        txfSearch2.addInputMethodListener(new java.awt.event.InputMethodListener() {
+        txtLibSearch.setBorder(null);
+        txtLibSearch.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        txtLibSearch.setOpaque(true);
+        txtLibSearch.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txfSearch2InputMethodTextChanged(evt);
+                txtLibSearchInputMethodTextChanged(evt);
             }
         });
-        txfSearch2.addActionListener(new java.awt.event.ActionListener() {
+        txtLibSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfSearch2ActionPerformed(evt);
+                txtLibSearchActionPerformed(evt);
             }
         });
-        txfSearch2.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtLibSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txfSearch2KeyTyped(evt);
+                txtLibSearchKeyTyped(evt);
             }
         });
-
-        btnSearch2.setBackground(new java.awt.Color(255, 255, 255));
-        btnSearch2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        btnSearch2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconSearch.png"))); // NOI18N
-        btnSearch2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSearch2.setOpaque(true);
 
         lblTitle1.setFont(new java.awt.Font("Roboto Black", 3, 24)); // NOI18N
         lblTitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle1.setText("SELECCIONAR LIBRO");
 
-        lblId1.setBackground(new java.awt.Color(255, 255, 204));
-        lblId1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        lblId1.setForeground(new java.awt.Color(255, 255, 204));
-        lblId1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblId1.setText("0");
-        lblId1.setToolTipText("");
-        lblId1.setEnabled(false);
-        lblId1.setFocusable(false);
+        lblLibId.setBackground(new java.awt.Color(255, 255, 204));
+        lblLibId.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        lblLibId.setForeground(new java.awt.Color(255, 255, 204));
+        lblLibId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLibId.setText("0");
+        lblLibId.setToolTipText("");
+        lblLibId.setEnabled(false);
+        lblLibId.setFocusable(false);
 
-        lblEstado1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        lblEstado1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEstado1.setText("0");
-        lblEstado1.setEnabled(false);
+        lblLibEstado.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        lblLibEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLibEstado.setText("0");
+        lblLibEstado.setEnabled(false);
 
         lblNombre1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblNombre1.setText("TITULO");
 
-        txtNombre1.setBackground(new java.awt.Color(255, 255, 204));
-        txtNombre1.setBorder(null);
-        txtNombre1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtNombre1.setEnabled(false);
-        txtNombre1.setOpaque(true);
+        txtLibTitulo.setBackground(new java.awt.Color(255, 255, 204));
+        txtLibTitulo.setBorder(null);
+        txtLibTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtLibTitulo.setEnabled(false);
+        txtLibTitulo.setOpaque(true);
 
         lblCedula1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblCedula1.setText("CODIGO");
 
-        txtCedula1.setBackground(new java.awt.Color(255, 255, 204));
-        txtCedula1.setBorder(null);
-        txtCedula1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtCedula1.setEnabled(false);
-        txtCedula1.setOpaque(true);
+        txtLibCodigo.setBackground(new java.awt.Color(255, 255, 204));
+        txtLibCodigo.setBorder(null);
+        txtLibCodigo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtLibCodigo.setEnabled(false);
+        txtLibCodigo.setOpaque(true);
 
-        txtApellido3.setBackground(new java.awt.Color(255, 255, 204));
-        txtApellido3.setBorder(null);
-        txtApellido3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtApellido3.setEnabled(false);
-        txtApellido3.setOpaque(true);
+        txtLibAutor.setBackground(new java.awt.Color(255, 255, 204));
+        txtLibAutor.setBorder(null);
+        txtLibAutor.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtLibAutor.setEnabled(false);
+        txtLibAutor.setOpaque(true);
 
         lblCategoria3.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblCategoria3.setText("AUTOR");
@@ -231,162 +227,166 @@ public class VPrestamos extends javax.swing.JPanel {
         lblCategoria4.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblCategoria4.setText("CATEGORIA");
 
-        txtApellido4.setBackground(new java.awt.Color(255, 255, 204));
-        txtApellido4.setBorder(null);
-        txtApellido4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtApellido4.setEnabled(false);
-        txtApellido4.setOpaque(true);
+        txtLibCategoria.setBackground(new java.awt.Color(255, 255, 204));
+        txtLibCategoria.setBorder(null);
+        txtLibCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtLibCategoria.setEnabled(false);
+        txtLibCategoria.setOpaque(true);
 
-        txtApellido5.setBackground(new java.awt.Color(255, 255, 204));
-        txtApellido5.setBorder(null);
-        txtApellido5.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtApellido5.setEnabled(false);
-        txtApellido5.setOpaque(true);
+        txtLibUbicacion.setBackground(new java.awt.Color(255, 255, 204));
+        txtLibUbicacion.setBorder(null);
+        txtLibUbicacion.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtLibUbicacion.setEnabled(false);
+        txtLibUbicacion.setOpaque(true);
 
         lblCategoria5.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblCategoria5.setText("UBICACION");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        btnLibSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconSearch.png"))); // NOI18N
+        btnLibSearch.setBorder(null);
+
+        lblLibInfo.setForeground(new java.awt.Color(255, 0, 51));
+        lblLibInfo.setText("* ");
+
+        javax.swing.GroupLayout pnlLibLayout = new javax.swing.GroupLayout(pnlLib);
+        pnlLib.setLayout(pnlLibLayout);
+        pnlLibLayout.setHorizontalGroup(
+            pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLibLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlLibLayout.createSequentialGroup()
+                        .addGroup(pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCategoria3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCategoria4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCategoria5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlLibLayout.createSequentialGroup()
+                        .addGroup(pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtApellido5)
-                            .addComponent(txtApellido4)
-                            .addComponent(txtApellido3)
-                            .addComponent(txtNombre1)
-                            .addComponent(txtCedula1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addComponent(txtLibUbicacion)
+                            .addComponent(txtLibCategoria)
+                            .addComponent(txtLibAutor)
+                            .addComponent(txtLibTitulo)
+                            .addComponent(txtLibCodigo, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLibLayout.createSequentialGroup()
+                                .addGroup(pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(pnlLibLayout.createSequentialGroup()
                                         .addComponent(lblCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txfSearch2))
+                                        .addComponent(lblLibEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtLibSearch))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnSearch2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblId1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addContainerGap())))
+                                .addGroup(pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblLibId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnLibSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap())
+                    .addGroup(pnlLibLayout.createSequentialGroup()
+                        .addComponent(lblLibInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+        pnlLibLayout.setVerticalGroup(
+            pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLibLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txfSearch2)
-                    .addComponent(btnSearch2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblId1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCedula1)))
+                .addGroup(pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtLibSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLibSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addComponent(lblLibInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlLibLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLibId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLibEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCedula1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtLibCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblNombre1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLibTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblCategoria3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtApellido3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLibAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblCategoria4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtApellido4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLibCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblCategoria5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtApellido5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLibUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 290, 510));
+        pnlCreatePrestamo.add(pnlLib, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 290, 510));
 
-        txfSearch1.setBorder(null);
-        txfSearch1.setMargin(new java.awt.Insets(0, 10, 0, 0));
-        txfSearch1.setOpaque(true);
-        txfSearch1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+        txtUserSearch.setBorder(null);
+        txtUserSearch.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        txtUserSearch.setOpaque(true);
+        txtUserSearch.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txfSearch1InputMethodTextChanged(evt);
+                txtUserSearchInputMethodTextChanged(evt);
             }
         });
-        txfSearch1.addActionListener(new java.awt.event.ActionListener() {
+        txtUserSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfSearch1ActionPerformed(evt);
+                txtUserSearchActionPerformed(evt);
             }
         });
-        txfSearch1.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtUserSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txfSearch1KeyTyped(evt);
+                txtUserSearchKeyTyped(evt);
             }
         });
-
-        btnSearch1.setBackground(new java.awt.Color(255, 255, 255));
-        btnSearch1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        btnSearch1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconSearch.png"))); // NOI18N
-        btnSearch1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSearch1.setOpaque(true);
 
         lblTitle.setFont(new java.awt.Font("Roboto Black", 3, 24)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("SELECCIONAR USUARIO");
 
-        lblId.setBackground(new java.awt.Color(255, 255, 204));
-        lblId.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        lblId.setForeground(new java.awt.Color(255, 255, 204));
-        lblId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblId.setText("0");
-        lblId.setToolTipText("");
-        lblId.setEnabled(false);
-        lblId.setFocusable(false);
+        lblUserId.setBackground(new java.awt.Color(255, 255, 204));
+        lblUserId.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        lblUserId.setForeground(new java.awt.Color(255, 255, 204));
+        lblUserId.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUserId.setText("0");
+        lblUserId.setToolTipText("");
+        lblUserId.setEnabled(false);
+        lblUserId.setFocusable(false);
 
-        lblEstado.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        lblEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEstado.setText("0");
-        lblEstado.setEnabled(false);
+        lblUserEstado.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
+        lblUserEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUserEstado.setText("0");
+        lblUserEstado.setEnabled(false);
 
         lblNombre.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblNombre.setText("NOMBRES");
 
-        txtNombre.setBackground(new java.awt.Color(255, 255, 204));
-        txtNombre.setBorder(null);
-        txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtNombre.setEnabled(false);
-        txtNombre.setOpaque(true);
+        txtUserNombre.setBackground(new java.awt.Color(255, 255, 204));
+        txtUserNombre.setBorder(null);
+        txtUserNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtUserNombre.setEnabled(false);
+        txtUserNombre.setOpaque(true);
 
         lblCedula.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblCedula.setText("CEDULA");
 
-        txtCedula.setBackground(new java.awt.Color(255, 255, 204));
-        txtCedula.setBorder(null);
-        txtCedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtCedula.setEnabled(false);
-        txtCedula.setOpaque(true);
+        txtUserCedula.setBackground(new java.awt.Color(255, 255, 204));
+        txtUserCedula.setBorder(null);
+        txtUserCedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtUserCedula.setEnabled(false);
+        txtUserCedula.setOpaque(true);
 
-        txtApellido.setBackground(new java.awt.Color(255, 255, 204));
-        txtApellido.setBorder(null);
-        txtApellido.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtApellido.setEnabled(false);
-        txtApellido.setOpaque(true);
+        txtUserCategoria.setBackground(new java.awt.Color(255, 255, 204));
+        txtUserCategoria.setBorder(null);
+        txtUserCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtUserCategoria.setEnabled(false);
+        txtUserCategoria.setOpaque(true);
 
         lblCategoria.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblCategoria.setText("CATEGORIA");
@@ -394,110 +394,120 @@ public class VPrestamos extends javax.swing.JPanel {
         lblCategoria1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblCategoria1.setText("CURSO");
 
-        txtApellido1.setBackground(new java.awt.Color(255, 255, 204));
-        txtApellido1.setBorder(null);
-        txtApellido1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtApellido1.setEnabled(false);
-        txtApellido1.setOpaque(true);
+        txtUserCurso.setBackground(new java.awt.Color(255, 255, 204));
+        txtUserCurso.setBorder(null);
+        txtUserCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtUserCurso.setEnabled(false);
+        txtUserCurso.setOpaque(true);
 
-        txtApellido2.setBackground(new java.awt.Color(255, 255, 204));
-        txtApellido2.setBorder(null);
-        txtApellido2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtApellido2.setEnabled(false);
-        txtApellido2.setOpaque(true);
+        txtUserEstado.setBackground(new java.awt.Color(255, 255, 204));
+        txtUserEstado.setBorder(null);
+        txtUserEstado.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtUserEstado.setEnabled(false);
+        txtUserEstado.setOpaque(true);
 
         lblCategoria2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblCategoria2.setText("ESTADO");
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        btnUserSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconSearch.png"))); // NOI18N
+        btnUserSearch.setBorder(null);
+
+        lblUserInfo.setForeground(new java.awt.Color(255, 0, 51));
+        lblUserInfo.setText("* ");
+
+        javax.swing.GroupLayout pnlUserLayout = new javax.swing.GroupLayout(pnlUser);
+        pnlUser.setLayout(pnlUserLayout);
+        pnlUserLayout.setHorizontalGroup(
+            pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUserLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlUserLayout.createSequentialGroup()
+                        .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblCategoria2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCedula)
+                    .addGroup(pnlUserLayout.createSequentialGroup()
+                        .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUserInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtUserCedula)
                             .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtApellido2)
-                            .addComponent(txtApellido1)
-                            .addComponent(txtApellido)
-                            .addComponent(txtNombre)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addComponent(txtUserEstado)
+                            .addComponent(txtUserCurso)
+                            .addComponent(txtUserCategoria)
+                            .addComponent(txtUserNombre)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUserLayout.createSequentialGroup()
+                                .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(pnlUserLayout.createSequentialGroup()
                                         .addComponent(lblCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(txfSearch1))
+                                        .addComponent(lblUserEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtUserSearch))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnUserSearch, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addContainerGap())))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+        pnlUserLayout.setVerticalGroup(
+            pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlUserLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txfSearch1)
-                    .addComponent(btnSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblCedula)))
+                .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtUserSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUserSearch))
+                .addGap(12, 12, 12)
+                .addComponent(lblUserInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUserEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCedula))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUserCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUserNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblCategoria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUserCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblCategoria1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUserCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblCategoria2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUserEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 510));
+        pnlCreatePrestamo.add(pnlUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 290, 510));
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        javax.swing.GroupLayout formCreatePrestamoLayout = new javax.swing.GroupLayout(formCreatePrestamo.getContentPane());
+        formCreatePrestamo.getContentPane().setLayout(formCreatePrestamoLayout);
+        formCreatePrestamoLayout.setHorizontalGroup(
+            formCreatePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formCreatePrestamoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlCreatePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 40, Short.MAX_VALUE))
+        formCreatePrestamoLayout.setVerticalGroup(
+            formCreatePrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(formCreatePrestamoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlCreatePrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        jFrame1.getAccessibleContext().setAccessibleParent(pnlMain);
+        formCreatePrestamo.getAccessibleContext().setAccessibleParent(pnlMain);
 
         setMinimumSize(new java.awt.Dimension(684, 694));
         setPreferredSize(new java.awt.Dimension(684, 694));
@@ -568,7 +578,7 @@ public class VPrestamos extends javax.swing.JPanel {
         btnCrearUsuario.setBackground(new java.awt.Color(153, 255, 153));
         btnCrearUsuario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         btnCrearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAdd.png"))); // NOI18N
-        btnCrearUsuario.setText("CREAR USUARIO");
+        btnCrearUsuario.setText("CREAR PRESTAMO");
         btnCrearUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnCrearUsuario.setIconTextGap(10);
         btnCrearUsuario.setMargin(new java.awt.Insets(2, 1, 3, 14));
@@ -637,7 +647,7 @@ public class VPrestamos extends javax.swing.JPanel {
     private void btnCrearUsuarioMouseClicked(java.awt.event.MouseEvent evt) {
         
         
-        jFrame1.setVisible(true);
+        formCreatePrestamo.setVisible(true);
 
         // cargarFormCrear();
     }
@@ -717,20 +727,17 @@ public class VPrestamos extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelCreatePrestamo;
+    private javax.swing.JButton btnCleanFormPrestamo;
     private javax.swing.JButton btnCrearUsuario;
-    private javax.swing.JButton btnCrearUsuario1;
+    private javax.swing.JButton btnCreatePrestamo;
     private javax.swing.JButton btnEditarUsuario;
-    private javax.swing.JButton btnEditarUsuario1;
     private javax.swing.JButton btnEliminarUsuario;
-    private javax.swing.JButton btnEliminarUsuario1;
+    private javax.swing.JButton btnLibSearch;
     private javax.swing.JLabel btnSearch;
-    private javax.swing.JLabel btnSearch1;
-    private javax.swing.JLabel btnSearch2;
+    private javax.swing.JButton btnUserSearch;
+    private javax.swing.JFrame formCreatePrestamo;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     protected javax.swing.JLabel lblCategoria;
@@ -741,29 +748,34 @@ public class VPrestamos extends javax.swing.JPanel {
     protected javax.swing.JLabel lblCategoria5;
     protected javax.swing.JLabel lblCedula;
     protected javax.swing.JLabel lblCedula1;
-    protected javax.swing.JLabel lblEstado;
-    protected javax.swing.JLabel lblEstado1;
-    protected javax.swing.JLabel lblId;
-    protected javax.swing.JLabel lblId1;
-    protected javax.swing.JLabel lblInfoCorreo;
+    protected javax.swing.JLabel lblInfoFormCreatePrestamo;
+    protected javax.swing.JLabel lblLibEstado;
+    protected javax.swing.JLabel lblLibId;
+    protected javax.swing.JLabel lblLibInfo;
     protected javax.swing.JLabel lblNombre;
     protected javax.swing.JLabel lblNombre1;
     protected javax.swing.JLabel lblTitle;
     protected javax.swing.JLabel lblTitle1;
+    protected javax.swing.JLabel lblUserEstado;
+    protected javax.swing.JLabel lblUserId;
+    protected javax.swing.JLabel lblUserInfo;
     private javax.swing.JPanel pnlBackground;
+    private javax.swing.JPanel pnlCreatePrestamo;
+    private javax.swing.JPanel pnlLib;
     private javax.swing.JPanel pnlMain;
+    private javax.swing.JPanel pnlUser;
     protected javax.swing.JTextField txfSearch;
-    protected javax.swing.JTextField txfSearch1;
-    protected javax.swing.JTextField txfSearch2;
-    protected javax.swing.JTextField txtApellido;
-    protected javax.swing.JTextField txtApellido1;
-    protected javax.swing.JTextField txtApellido2;
-    protected javax.swing.JTextField txtApellido3;
-    protected javax.swing.JTextField txtApellido4;
-    protected javax.swing.JTextField txtApellido5;
-    protected javax.swing.JTextField txtCedula;
-    protected javax.swing.JTextField txtCedula1;
-    protected javax.swing.JTextField txtNombre;
-    protected javax.swing.JTextField txtNombre1;
+    protected javax.swing.JTextField txtLibAutor;
+    protected javax.swing.JTextField txtLibCategoria;
+    protected javax.swing.JTextField txtLibCodigo;
+    protected javax.swing.JTextField txtLibSearch;
+    protected javax.swing.JTextField txtLibTitulo;
+    protected javax.swing.JTextField txtLibUbicacion;
+    protected javax.swing.JTextField txtUserCategoria;
+    protected javax.swing.JTextField txtUserCedula;
+    protected javax.swing.JTextField txtUserCurso;
+    protected javax.swing.JTextField txtUserEstado;
+    protected javax.swing.JTextField txtUserNombre;
+    protected javax.swing.JTextField txtUserSearch;
     // End of variables declaration//GEN-END:variables
 }
