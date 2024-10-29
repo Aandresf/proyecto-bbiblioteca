@@ -61,6 +61,8 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         pnlHeader = new javax.swing.JPanel();
+        lblSede = new javax.swing.JLabel();
+        cbxSedeSelec = new javax.swing.JComboBox<>();
         lblTitle = new javax.swing.JLabel();
         pnlMenu = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
@@ -81,13 +83,11 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1216, 762));
         setName(""); // NOI18N
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1216, 762));
         setResizable(false);
         setSize(new java.awt.Dimension(1216, 762));
 
         desktopPane.setMinimumSize(new java.awt.Dimension(1216, 762));
         desktopPane.setName(""); // NOI18N
-        desktopPane.setPreferredSize(new java.awt.Dimension(1216, 762));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setAutoscrolls(true);
@@ -101,11 +101,23 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         pnlHeader.setPreferredSize(new java.awt.Dimension(1000, 30));
         pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblSede.setBackground(new java.awt.Color(0, 102, 102));
+        lblSede.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        lblSede.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblSede.setText("SEDE");
+        pnlHeader.add(lblSede, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 30));
+
+        cbxSedeSelec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxSedeSelec.setBorder(null);
+        cbxSedeSelec.setMinimumSize(new java.awt.Dimension(43, 22));
+        cbxSedeSelec.setPreferredSize(new java.awt.Dimension(43, 22));
+        pnlHeader.add(cbxSedeSelec, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 2, 210, 25));
+
         lblTitle.setBackground(new java.awt.Color(0, 102, 102));
         lblTitle.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("SISTEMA DE BIBLIOTECAS");
-        pnlHeader.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 30));
+        pnlHeader.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 230, 30));
 
         jPanel1.add(pnlHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 0, 1000, 30));
 
@@ -723,10 +735,12 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
     private javax.swing.JLabel btnMenuSalir;
     private javax.swing.JLabel btnMenuSedes;
     private javax.swing.JLabel btnMenuUsuarios;
+    public javax.swing.JComboBox<String> cbxSedeSelec;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblSede;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlHeader;
     private javax.swing.JPanel pnlMain;

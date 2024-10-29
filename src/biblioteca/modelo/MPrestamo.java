@@ -4,9 +4,10 @@ package biblioteca.modelo;
 import java.sql.Date;
 
 public class MPrestamo {
+    private int id;
     private int libro;
     private int usuario;
-    private int fechaPrestamo;
+    private Date fechaPrestamo;
     private Date fechaEstimada;
     private Date fechaExtendida;
     private Date fechaDevolucion;
@@ -15,7 +16,18 @@ public class MPrestamo {
     public MPrestamo() {
     }
 
-    public MPrestamo(int estado, Date fechaDevolucion, Date fechaEstimada, Date fechaExtendida, int fechaPrestamo, int libro, int usuario) {
+    public MPrestamo(int id, int estado, Date fechaDevolucion, Date fechaEstimada, Date fechaExtendida, Date fechaPrestamo, int libro, int usuario) {
+        this.id = id;
+        this.estado = estado;
+        this.fechaDevolucion = fechaDevolucion;
+        this.fechaEstimada = fechaEstimada;
+        this.fechaExtendida = fechaExtendida;
+        this.fechaPrestamo = fechaPrestamo;
+        this.libro = libro;
+        this.usuario = usuario;
+    }
+
+    public MPrestamo(int estado, Date fechaDevolucion, Date fechaEstimada, Date fechaExtendida, Date fechaPrestamo, int libro, int usuario) {
         this.estado = estado;
         this.fechaDevolucion = fechaDevolucion;
         this.fechaEstimada = fechaEstimada;
@@ -41,11 +53,11 @@ public class MPrestamo {
         this.usuario = usuario;
     }
 
-    public int getFechaPrestamo() {
+    public Date getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    public void setFechaPrestamo(int fechaPrestamo) {
+    public void setFechaPrestamo(Date fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
@@ -79,6 +91,14 @@ public class MPrestamo {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 

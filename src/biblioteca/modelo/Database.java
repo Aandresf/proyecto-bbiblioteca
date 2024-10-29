@@ -77,9 +77,9 @@ public class Database {
     }
 
     // Recibe el nombre del procedimiento en una cadena con el nombre y parametros
-    public boolean  ejecutarProcedimiento(String nombre){
+    public boolean  ejecutarProcedimiento(String q){
         try {
-            CallableStatement cs = conexion.prepareCall("{call " + nombre + "}");
+            CallableStatement cs = conexion.prepareCall(q);
             return cs.execute();
         } catch (SQLException e) {
             e.printStackTrace();

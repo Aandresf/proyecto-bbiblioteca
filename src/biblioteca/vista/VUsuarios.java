@@ -5,15 +5,12 @@
 package biblioteca.vista;
 
 import biblioteca.controlador.*;
+
 import biblioteca.modelo.MCarrera;
 import biblioteca.modelo.MUsuarios;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputMethodEvent;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
@@ -30,24 +27,24 @@ public class VUsuarios extends javax.swing.JPanel {
      * Creates new form Dashboard
      */
 
-    public MUsuarios insertUser;
-
-
+    public MUsuarios insertUser;   
+    
     public VUsuarios() {
+        // = new VFUsuarisos();
         initComponents();
         lblId.setVisible(false);
         lblEstado.setVisible(false);
         lblControl.setVisible(false);
         lblInfoCorreo.setVisible(false);
 
-        //tblUsers.setModel(new CUsuarios().mostarVistaUsuarios());
-
     }
 
-    private int deleteUser(){
-        String usuario = tblUsers.getModel().getValueAt(tblUsers.getSelectedRow(), 0).toString();
+    private void deleteUser(){
 
-        return new CUsuarios().elimiarUsuario(usuario);
+        if(tblUsers.getSelectedRow() != -1){
+            String usuario = tblUsers.getModel().getValueAt(tblUsers.getSelectedRow(), 0).toString();
+            JOptionPane.showMessageDialog(pnlUsuarioMain, new CUsuarios().elimiarUsuario(usuario) + "usuario eliminado");
+        } else JOptionPane.showMessageDialog(pnlUsuarioMain, "Selecciones un usuario a eliminar");
     }
 
     private void mostrarUsuarios(){
@@ -152,10 +149,6 @@ public class VUsuarios extends javax.swing.JPanel {
             cbxCategoria.setSelectedIndex(cat);
             cbxCarrera.setSelectedIndex(car);
             
-
-            //JOptionPane.showMessageDialog(pnlUsuarioMain, "Categoria: "+ cat);
-            //JOptionPane.showMessageDialog(pnlUsuarioMain, "Carrera: "+ car);
-
         } else {
             JOptionPane.showMessageDialog(pnlUsuarioMain, "Seleccione el Usuario a modificar.");
         }
@@ -188,6 +181,26 @@ public class VUsuarios extends javax.swing.JPanel {
         } else {
             filtro.setRowFilter(RowFilter.regexFilter("(?i)" + buscar));
         }
+}
+
+    public void clickBtnAceptar(){
+    int control = Integer.parseInt(lblControl.getText());
+
+    if (control == 1){
+        if (!txtCedula.getText().isBlank() && !txtNombre.getText().isBlank() && !txtApellido.getText().isBlank()) {
+                JOptionPane.showMessageDialog(pnlFormUsuario,"Usuarios registrados: "+ crearUsuario());   
+                mostrarUsuarios();
+                limpiar();
+                frameFormUsuarios.setVisible(false);
+            } else JOptionPane.showMessageDialog(pnlFormUsuario, "Complete los campos Cedula, Nombre y Apellidos");
+
+    } else if (control == 2){
+        JOptionPane.showMessageDialog(frameFormUsuarios, "usuario " + lblId.getText() + " modificado");
+        modificarUsuario();
+        mostrarUsuarios();
+        limpiar();
+        frameFormUsuarios.setVisible(false);
+    }
 }
 
 
@@ -832,7 +845,9 @@ public class VUsuarios extends javax.swing.JPanel {
         });
         pnlTbUsuarios.add(btnEditarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 160, 40));
 
+        btnEliminarUsuario.setBackground(new java.awt.Color(102, 0, 0));
         btnEliminarUsuario.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        btnEliminarUsuario.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconTrash.png"))); // NOI18N
         btnEliminarUsuario.setText("ELIMINAR");
         btnEliminarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -856,121 +871,94 @@ public class VUsuarios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    protected void jButton1ActionPerformed(ActionEvent evt) {
-        // TODO Auto-generated method stub
-    }
+    protected void jButton1ActionPerformed(ActionEvent evt) {}
 
-    protected void btnEliminarUsuarioActionPerformed(ActionEvent evt) {
-        // TODO Auto-generated method stub
-    }
+    protected void btnEliminarUsuarioActionPerformed(ActionEvent evt) {}
 
-    protected void txfSearchInputMethodTextChanged(InputMethodEvent evt) {
-        // TODO Auto-generated method stub
-    }
+    protected void txfSearchInputMethodTextChanged(InputMethodEvent evt) {}
 
-    protected void txfSearchActionPerformed(ActionEvent evt) {
-        // TODO Auto-generated method stub
-    }
+    protected void txfSearchActionPerformed(ActionEvent evt) {}
 
-    protected void btnCrearUsuarioActionPerformed(ActionEvent evt) {
-        // TODO Auto-generated method stub
-    }
+    protected void btnCrearUsuarioActionPerformed(ActionEvent evt) {}
 
-    protected void btnEditarUsuarioActionPerformed(ActionEvent evt) {
-        // TODO Auto-generated method stub
-    }
+    protected void btnEditarUsuarioActionPerformed(ActionEvent evt) {}
 
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        // TODO add your handling code here:
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {
+        
         frameFormUsuarios.setVisible(false);
         mostrarUsuarios();
         limpiar();
-    }//GEN-LAST:event_btnEliminarMouseClicked
+    }
 
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        // TODO add your handling code here:
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {
+        
         mostrarUsuarios();
 
-    }//GEN-LAST:event_formComponentShown
+    }
     
-    private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarMouseClicked
-        // TODO add your handling code here:
-        int control = Integer.parseInt(lblControl.getText());
+    private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {
+        
+        clickBtnAceptar();
 
-        if (control == 1){
-            JOptionPane.showMessageDialog(pnlFormUsuario,"Usuarios registrados: "+ crearUsuario());   
-                mostrarUsuarios();
-                limpiar();
-                frameFormUsuarios.setVisible(false);
-        } else if (control == 2){
-            JOptionPane.showMessageDialog(frameFormUsuarios, "usuario " + lblId.getText() + " modificado");
-            modificarUsuario();
-            mostrarUsuarios();
-            limpiar();
-            frameFormUsuarios.setVisible(false);
-        }
+    }
 
-    }//GEN-LAST:event_btnAceptarMouseClicked
-
-    private void frameFormUsuariosComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_frameFormUsuariosComponentShown
-        // TODO add your handling code here:
-
+    private void frameFormUsuariosComponentShown(java.awt.event.ComponentEvent evt) {
         // cargarCarreras();
         // cargarCategorias();
-    }//GEN-LAST:event_frameFormUsuariosComponentShown
+    }
 
-    private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarMouseClicked
-        // TODO add your handling code here:
+    private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {
+        
         limpiar();
-    }//GEN-LAST:event_btnLimpiarMouseClicked
+    }
 
-    private void btnCrearUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearUsuarioMouseClicked
-        // TODO add your handling code here:
+    private void btnCrearUsuarioMouseClicked(java.awt.event.MouseEvent evt) {
+        
         
         cargarFormCrear();
-    }//GEN-LAST:event_btnCrearUsuarioMouseClicked
+    }
 
-    private void btnEditarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarUsuarioMouseClicked
-        // TODO add your handling code here:
+    private void btnEditarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {
+        
         // String usuario = tblUsers.getModel().getValueAt(tblUsers.getSelectedRow(), 0).toString();
         // JOptionPane.showMessageDialog(pnlUsuarioMain, usuario);
         cargarFormModificar();
-    }//GEN-LAST:event_btnEditarUsuarioMouseClicked
+    }
 
-    private void btnEliminarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarUsuarioMouseClicked
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(pnlUsuarioMain, deleteUser() +" usuario eliminado");
+    private void btnEliminarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {
+        
+        deleteUser();
         mostrarUsuarios();
-    }//GEN-LAST:event_btnEliminarUsuarioMouseClicked
+    }
 
-    private void txfSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txfSearchKeyTyped
-        // TODO add your handling code here:
+    private void txfSearchKeyTyped(java.awt.event.KeyEvent evt) {
+        
         ((AbstractDocument) txfSearch.getDocument()).setDocumentFilter(new Validaciones.filtroAlphaNumerico());
         filtrarTabla();
-    }//GEN-LAST:event_txfSearchKeyTyped
+    }
 
-    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
-        // TODO add your handling code here:
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {
+        
         ((AbstractDocument) txtCedula.getDocument()).setDocumentFilter(new Validaciones.filtroNumerico());
-    }//GEN-LAST:event_txtCedulaKeyTyped
+    }
 
-    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        // TODO add your handling code here:
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {
+        
         ((AbstractDocument) txtNombre.getDocument()).setDocumentFilter(new Validaciones.filtroLetras());
-    }//GEN-LAST:event_txtNombreKeyTyped
+    }
 
-    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoKeyTyped
-        // TODO add your handling code here:
+    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {
+        
         ((AbstractDocument) txtApellido.getDocument()).setDocumentFilter(new Validaciones.filtroLetras());
-    }//GEN-LAST:event_txtApellidoKeyTyped
+    }
 
-    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-        // TODO add your handling code here:
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {
+        
         ((AbstractDocument) txtTelefono.getDocument()).setDocumentFilter(new Validaciones.filtroNumerico());
-    }//GEN-LAST:event_txtTelefonoKeyTyped
+    }
 
-    private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCorreoKeyTyped
-        // TODO add your handling code here:
+    private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {
+        
         if (new Validaciones().validarCorreo(txtCorreo.getText())) {
             lblInfoCorreo.setVisible(false);
             btnAceptar.setVisible(true);
@@ -978,108 +966,103 @@ public class VUsuarios extends javax.swing.JPanel {
             lblInfoCorreo.setVisible(true);
             btnAceptar.setVisible(false);
         }
-    }//GEN-LAST:event_txtCorreoKeyTyped
+    }
 
-    private void txtSemestreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSemestreKeyTyped
-        // TODO add your handling code here:
+    private void txtSemestreKeyTyped(java.awt.event.KeyEvent evt) {
+        
         ((AbstractDocument) txtSemestre.getDocument()).setDocumentFilter(new Validaciones.filtroNumerico());
-    }//GEN-LAST:event_txtSemestreKeyTyped
+    }
 
-    private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoFocusLost
+    private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {}
 
-    private void btnAceptarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAceptarCursoMouseClicked
-        // TODO add your handling code here:
+    private void btnAceptarCursoMouseClicked(java.awt.event.MouseEvent evt) {
+        
         JOptionPane.showMessageDialog(fromCreateCurso,txtCurso.getText().toUpperCase());
 
         JOptionPane.showMessageDialog(pnlFormUsuario, "Carreras Registradas: " + crearCarrera());
 
-            cargarCarreras();
+        cargarCarreras();
 
             txtCurso.setText("");
 
-    }//GEN-LAST:event_btnAceptarCursoMouseClicked
+    }
 
-    private void btnLimpiarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarCursoMouseClicked
-        // TODO add your handling code here:
+    private void btnLimpiarCursoMouseClicked(java.awt.event.MouseEvent evt) {
         txtCurso.setText("");
-    }//GEN-LAST:event_btnLimpiarCursoMouseClicked
+    }
 
-    private void btnEliminarCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarCursoMouseClicked
-        // TODO add your handling code here:
+    private void btnEliminarCursoMouseClicked(java.awt.event.MouseEvent evt) {
+        
         fromCreateCurso.setVisible(false);
-    }//GEN-LAST:event_btnEliminarCursoMouseClicked
+    }
 
-    private void txtCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCursoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCursoActionPerformed
+    private void txtCursoActionPerformed(java.awt.event.ActionEvent evt) {}
 
-    private void lblAddCursoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddCursoMouseClicked
-        // TODO add your handling code here:
+    private void lblAddCursoMouseClicked(java.awt.event.MouseEvent evt) {
+        
         fromCreateCurso.setVisible(true);
-    }//GEN-LAST:event_lblAddCursoMouseClicked
+    }
 
-    private void txtCursoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCursoKeyTyped
-        // TODO add your handling code here:
+    private void txtCursoKeyTyped(java.awt.event.KeyEvent evt) {
+        
         ((AbstractDocument) txtCurso.getDocument()).setDocumentFilter(new Validaciones.filtroLetras());
-    }//GEN-LAST:event_txtCursoKeyTyped
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnAceptar;
-    private javax.swing.JLabel btnAceptarCurso;
+    protected javax.swing.JLabel btnAceptar;
+    protected javax.swing.JLabel btnAceptarCurso;
     private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JButton btnEditarUsuario;
-    private javax.swing.JLabel btnEliminar;
-    private javax.swing.JLabel btnEliminarCurso;
+    protected javax.swing.JLabel btnEliminar;
+    protected javax.swing.JLabel btnEliminarCurso;
     private javax.swing.JButton btnEliminarUsuario;
-    private javax.swing.JLabel btnLimpiar;
-    private javax.swing.JLabel btnLimpiarCurso;
+    protected javax.swing.JLabel btnLimpiar;
+    protected javax.swing.JLabel btnLimpiarCurso;
     private javax.swing.JLabel btnSearch;
-    private javax.swing.JComboBox<String> cbxCarrera;
-    private javax.swing.JComboBox<String> cbxCategoria;
-    private javax.swing.JFrame frameFormUsuarios;
+    protected javax.swing.JComboBox<String> cbxCarrera;
+    protected javax.swing.JComboBox<String> cbxCategoria;
+    protected javax.swing.JFrame frameFormUsuarios;
     private javax.swing.JFrame fromCreateCurso;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JLabel lblAddCurso;
-    private javax.swing.JLabel lblApellido;
-    private javax.swing.JLabel lblCategoria;
-    private javax.swing.JLabel lblCedula;
-    private javax.swing.JLabel lblControl;
-    private javax.swing.JLabel lblCorreo;
-    private javax.swing.JLabel lblCurso;
-    private javax.swing.JLabel lblEstado;
-    private javax.swing.JLabel lblId;
-    private javax.swing.JLabel lblInfoCorreo;
-    private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblSemestre;
-    private javax.swing.JLabel lblTelefono;
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblTitleCurso;
-    private javax.swing.JPanel pnlFormUsuario;
+    protected javax.swing.JSeparator jSeparator1;
+    protected javax.swing.JSeparator jSeparator10;
+    protected javax.swing.JSeparator jSeparator2;
+    protected javax.swing.JSeparator jSeparator3;
+    protected javax.swing.JSeparator jSeparator4;
+    protected javax.swing.JSeparator jSeparator5;
+    protected javax.swing.JSeparator jSeparator6;
+    protected javax.swing.JSeparator jSeparator7;
+    protected javax.swing.JSeparator jSeparator8;
+    protected javax.swing.JSeparator jSeparator9;
+    protected javax.swing.JLabel lblAddCurso;
+    protected javax.swing.JLabel lblApellido;
+    protected javax.swing.JLabel lblCategoria;
+    protected javax.swing.JLabel lblCedula;
+    protected javax.swing.JLabel lblControl;
+    protected javax.swing.JLabel lblCorreo;
+    protected javax.swing.JLabel lblCurso;
+    protected javax.swing.JLabel lblEstado;
+    protected javax.swing.JLabel lblId;
+    protected javax.swing.JLabel lblInfoCorreo;
+    protected javax.swing.JLabel lblNombre;
+    protected javax.swing.JLabel lblSemestre;
+    protected javax.swing.JLabel lblTelefono;
+    protected javax.swing.JLabel lblTitle;
+    protected javax.swing.JLabel lblTitleCurso;
+    protected javax.swing.JPanel pnlFormUsuario;
     private javax.swing.JPanel pnlTbUsuarios;
-    private javax.swing.JPanel pnlUsuarioHeader;
-    private javax.swing.JPanel pnlUsuarioMain;
-    private javax.swing.JTable tblUsers;
-    private javax.swing.JTextField txfSearch;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtCurso;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtSemestre;
-    private javax.swing.JTextField txtTelefono;
+    protected javax.swing.JPanel pnlUsuarioHeader;
+    protected javax.swing.JPanel pnlUsuarioMain;
+    protected javax.swing.JTable tblUsers;
+    protected javax.swing.JTextField txfSearch;
+    protected javax.swing.JTextField txtApellido;
+    protected javax.swing.JTextField txtCedula;
+    protected javax.swing.JTextField txtCorreo;
+    protected javax.swing.JTextField txtCurso;
+    protected javax.swing.JTextField txtNombre;
+    protected javax.swing.JTextField txtSemestre;
+    protected javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

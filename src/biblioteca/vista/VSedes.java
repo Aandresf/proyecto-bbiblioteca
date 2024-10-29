@@ -4,6 +4,22 @@
  */
 package biblioteca.vista;
 
+import biblioteca.controlador.*;
+import biblioteca.modelo.MCarrera;
+import biblioteca.modelo.MUsuarios;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.InputMethodEvent;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import javax.swing.text.AbstractDocument;
+
 /**
  *
  * @author arnal
@@ -26,57 +42,12 @@ public class VSedes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        pnlMain = new javax.swing.JPanel();
-        lblSubTitle1 = new javax.swing.JLabel();
-        pnlBackground = new javax.swing.JPanel();
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        setMinimumSize(new java.awt.Dimension(684, 694));
-        setPreferredSize(new java.awt.Dimension(684, 694));
+        setMinimumSize(new java.awt.Dimension(1000, 732));
+        setPreferredSize(new java.awt.Dimension(1000, 732));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnlMain.setPreferredSize(new java.awt.Dimension(684, 694));
-        pnlMain.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblSubTitle1.setFont(new java.awt.Font("Californian FB", 1, 36)); // NOI18N
-        lblSubTitle1.setText("SEDES");
-        pnlMain.add(lblSubTitle1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 232, 54));
-
-        pnlBackground.setBackground(new java.awt.Color(255, 255, 255));
-        pnlBackground.setMinimumSize(new java.awt.Dimension(684, 685));
-
-        javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
-        pnlBackground.setLayout(pnlBackgroundLayout);
-        pnlBackgroundLayout.setHorizontalGroup(
-            pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 684, Short.MAX_VALUE)
-        );
-        pnlBackgroundLayout.setVerticalGroup(
-            pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
-        );
-
-        pnlMain.add(pnlBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 690));
-
-        add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 690));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblSubTitle1;
-    private javax.swing.JPanel pnlBackground;
-    private javax.swing.JPanel pnlMain;
     // End of variables declaration//GEN-END:variables
 }
