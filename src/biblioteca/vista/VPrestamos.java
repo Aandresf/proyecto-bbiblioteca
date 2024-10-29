@@ -23,11 +23,11 @@ public class VPrestamos extends javax.swing.JPanel {
       btnCrearPrestamo.setText("<html>NUEVO<br>PRESTAMO</html>");
       lblUserId.setVisible(false);
       lblUserEstado.setVisible(false);
-      lblUserInfo.setVisible(false);
-      lblInfoFormCreatePrestamo.setVisible(false);
+      lblUserInfo.setText("");
+      lblInfoFormCreatePrestamo.setText("");
       lblLibEstado.setVisible(false);
       lblLibId.setVisible(false);
-      lblLibInfo.setVisible(false);
+      lblLibInfo.setText("");
     }
 
     /**
@@ -609,7 +609,9 @@ public class VPrestamos extends javax.swing.JPanel {
     private void btnUserSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserSearchMouseClicked
         // TODO add your handling code here:
         
-        new VFuncionesPrestamos().buscar(txtUserSearch,
+        new VFuncionesPrestamos().limpiar(txtUserCedula, txtUserCedula, txtUserNombre, txtUserCategoria, txtUserCurso, txtUserEstado, lblUserEstado, lblUserId, lblUserInfo, lblInfoFormCreatePrestamo);
+
+        new VFuncionesPrestamos().buscarCedula(txtUserSearch,
          txtUserCedula,
           txtUserNombre,
            txtUserCategoria,
@@ -627,12 +629,30 @@ public class VPrestamos extends javax.swing.JPanel {
 
     private void btnLibSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLibSearchMouseClicked
         // TODO add your handling code here:
+
+        new VFuncionesPrestamos().limpiar(txtLibCodigo, txtLibCodigo, txtLibTitulo, txtLibAutor, txtLibCategoria, txtLibUbicacion, lblLibEstado, lblLibId, lblLibInfo, lblInfoFormCreatePrestamo);
+
+        new VFuncionesPrestamos().buscarLibro(txtLibSearch,
+         txtLibCodigo,
+         txtLibTitulo,
+         txtLibAutor,
+         txtLibCategoria,
+         txtLibUbicacion,
+         lblLibId,
+         lblLibEstado,
+         lblLibInfo,
+         lblInfoFormCreatePrestamo);
+        
+
     }//GEN-LAST:event_btnLibSearchMouseClicked
 
     private void btnCancelCreatePrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelCreatePrestamoMouseClicked
         // TODO add your handling code here:
 
         formCreatePrestamo.setVisible(false);
+        new VFuncionesPrestamos().limpiar(txtUserSearch, txtUserCedula, txtUserNombre, txtUserCategoria, txtUserCurso, txtUserEstado, lblUserEstado, lblUserId, lblUserInfo, lblInfoFormCreatePrestamo);
+        new VFuncionesPrestamos().limpiar(txtLibSearch, txtLibCodigo, txtLibTitulo, txtLibAutor, txtLibCategoria, txtLibUbicacion, lblLibEstado, lblLibId, lblLibInfo, lblInfoFormCreatePrestamo);
+
     }//GEN-LAST:event_btnCancelCreatePrestamoMouseClicked
 
     private void btnCleanFormPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCleanFormPrestamoMouseClicked
@@ -644,6 +664,12 @@ public class VPrestamos extends javax.swing.JPanel {
 
     private void btnCreatePrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreatePrestamoMouseClicked
         // TODO add your handling code here:
+
+        new VFuncionesPrestamos().crearPrestamo(lblLibId, lblUserId, lblInfoFormCreatePrestamo);
+        new VFuncionesPrestamos().limpiar(txtUserSearch, txtUserCedula, txtUserNombre, txtUserCategoria, txtUserCurso, txtUserEstado, lblUserEstado, lblUserId, lblUserInfo, lblUserInfo);
+        new VFuncionesPrestamos().limpiar(txtLibSearch, txtLibCodigo, txtLibTitulo, txtLibAutor, txtLibCategoria, txtLibUbicacion, lblLibEstado, lblLibId, lblLibInfo, lblLibInfo);
+        new VFuncionesPrestamos().mostrarPrestamos(tblPrestamos);
+
     }//GEN-LAST:event_btnCreatePrestamoMouseClicked
 
     private void btnCrearPrestamoMouseClicked(java.awt.event.MouseEvent evt) {

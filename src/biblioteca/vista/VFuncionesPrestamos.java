@@ -4,8 +4,8 @@
  */
 package biblioteca.vista;
 
-import  biblioteca.controlador.*;
-import biblioteca.modelo.MVistaUsuarios;
+import biblioteca.controlador.*;
+import biblioteca.modelo.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -116,6 +116,13 @@ public class VFuncionesPrestamos {
     
     }
 
+    public void crearPrestamo(JLabel inventario, JLabel usuario, JLabel info){
+        if (!inventario.getText().isBlank() && !usuario.getText().isBlank()){
+            new CPrestamos().registrarPrestamo(Integer.parseInt(inventario.getText()), Integer.parseInt(usuario.getText()));
+            JOptionPane.showMessageDialog(inventario, "PRESTAMO CREADO");
+        } else { info.setText("INGRESE UN USUARIO Y LIBRO VALIDO"); }
+    }
+
     public void eliminarPrestamo(JTable tabla){
         
         int idPrestamo = -1; // Variable con el id del prestamo a recepcioeliminar
@@ -174,12 +181,12 @@ public class VFuncionesPrestamos {
         lbl1.setText("");
         lbl2.setText("");
         lbl3.setText("");
-        lbl4.setText("FORMULARIO LIMPIADO");
+        lbl4.setText("");
 
     }
 
     // se ejecuta al presionar el boton de buscar en el formCrearPrestamo
-        public void buscar(JTextField txt1, // textbox con el usuario a buscar
+        public void buscarCedula(JTextField txt1, // textbox con el usuario a buscar
         JTextField txt2,
         JTextField txt3,
         JTextField txt4,
@@ -205,16 +212,46 @@ public class VFuncionesPrestamos {
                 lbl1.setText(String.valueOf(user.getId()));
                 lbl2.setText("");
                 lbl3.setText("");
-                lbl3.setVisible(false);
 
             } else {
-                lbl3.setText("* USUARIO NO REGISTRADO");
+                lbl3.setText("* USUARIO NO ENCONTRADO");
                 txt1.setText("");
-                lbl3.setVisible(true);
             }
+    }
 
+    // se ejecuta al presionar el boton de buscar en el formCrearPrestamo
 
+     public void buscarLibro(JTextField txt1, // textbox con el usuario a buscar
+     JTextField txt2,
+    JTextField txt3,
+    JTextField txt4,
+    JTextField txt5,
+    JTextField txt6,
+    JLabel lbl1,
+    JLabel lbl2,
+    JLabel lbl3,
+    JLabel lbl4
+    ){
 
+    MVistaLibros lib = new CPrestamos().obtenerLibroCampo("CODIGO", txt1.getText());
+
+        if (!(lib == null)){
+
+            txt1.setText("");
+            txt2.setText(lib.getCodigo());
+            txt3.setText(lib.getTitulo());
+            txt4.setText(lib.getAutor());
+            txt5.setText(lib.getCategoria());
+            txt6.setText(lib.getBiblioteca() + " - " + lib.getSector());
+    
+            lbl1.setText(String.valueOf(lib.getId()));
+            lbl2.setText("");
+            lbl3.setText("");
+            
+        } else {
+            lbl3.setText("* LIBRO NO ENCONTRADO");
+            txt1.setText("");
+        }
     }
     
 }

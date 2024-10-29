@@ -60,14 +60,6 @@ public class DAOPrestamos {
         return new Database().actualizar(q);
     };
 
-    public int actualizarInventario(int id, int estado){
-        String q = "UPDATE INVENTARIO SET " +
-        "ESTADO = "+ estado +" "+
-        "WHERE ID = "+ id +";";
-
-        return new Database().actualizar(q);
-    };
-
     public List obtenerVistaPrestamos(){
         String q = "SELECT * FROM \"DETALLES PRESTAMOS\" ORDER BY \"ID PRESTAMO\" ASC;";
         List<Map> registros = new Database().ejecutar(q);
@@ -103,26 +95,36 @@ public class DAOPrestamos {
         return new Database().actualizar(q);
     }
 
-    public MVistaUsuarios obtenerUsuario(int cedula){
-        String q = "SELECT * FROM \"DETALLES USUARIOS\" WHERE CEDULA = " + cedula + ";";
+    // Pasar estos metodos a DAOLibros
+
+    public int actualizarInventario(int id, int estado){
+        String q = "UPDATE INVENTARIO SET " +
+        "ESTADO = "+ estado +" "+
+        "WHERE ID = "+ id +";";
+
+        return new Database().actualizar(q);
+    };
+
+    public MVistaLibros obtenerInventarioCampo(String campo, String valorCampo){
+        String q = "SELECT * FROM \"LIBROS DISPONIBLES\" WHERE \""+ campo +"\" = \'"+ valorCampo +"\';";
 
         List<Map> registros = new Database().ejecutar(q);
-        MUsuarios usuarios = null;
+        MVistaLibros libros = null;
 
         for (Map registro : registros) {
-            usuarios = new MUsuarios((int)registro.get("id"),
-            (int)registro.get("categoria"),
-            (int)registro.get("cedula"),
-            (String)registro.get("nombre"),
-            (String)registro.get("apellido"),
-            (String)registro.get("telefono"),
-            (String)registro.get("correo"),
-            (int)registro.get("carrera"),
-            (int)registro.get("semestre"),
-            (int)registro.get("estado"));
+            libros = new MVistaLibros(
+                (int)registro.get("ID"),
+                (String)registro.get("CODIGO"),
+                (String)registro.get("TITULO"),
+                (String)registro.get("AUTOR"),
+                (String)registro.get("CATEGORIA"),
+                (String)registro.get("BIBLIOTECA"),
+                (String)registro.get("SECTOR"),
+                (int)registro.get("ESTADO")
+                );
         }
 
-        return usuarios;
+        return libros;
     }
     
 }

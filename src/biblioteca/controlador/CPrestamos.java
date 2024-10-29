@@ -5,6 +5,7 @@
 package biblioteca.controlador;
 
 import biblioteca.modelo.DAOPrestamos;
+import biblioteca.modelo.MVistaLibros;
 import biblioteca.modelo.MVistaPrestamos;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -50,12 +51,17 @@ public class CPrestamos {
         return new DAOPrestamos().actualizarInventario(id, estado);
     }
 
+    public boolean  registrarPrestamo(int inventario, int usuario){
+        return new DAOPrestamos().insertarPrestamo(inventario, usuario);
+    }
+
     public int eliminarPrestamo(int id){
         return new DAOPrestamos().eliminarPrestamo(id);
     }
 
-    public void obtenerUsuario(int cedula){
-        return new DAOPrestamos().obtenerUsuario(cedula);
+    // Pasar este metodo a CLibros
+    public MVistaLibros obtenerLibroCampo(String campo, String valor){
+        return new DAOPrestamos().obtenerInventarioCampo(campo, valor);
     }
 
 
