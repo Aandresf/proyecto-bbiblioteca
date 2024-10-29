@@ -102,5 +102,27 @@ public class DAOPrestamos {
         String q = "DELETE FROM PRESTAMOS WHERE ID = "+ id +";";
         return new Database().actualizar(q);
     }
+
+    public MVistaUsuarios obtenerUsuario(int cedula){
+        String q = "SELECT * FROM \"DETALLES USUARIOS\" WHERE CEDULA = " + cedula + ";";
+
+        List<Map> registros = new Database().ejecutar(q);
+        MUsuarios usuarios = null;
+
+        for (Map registro : registros) {
+            usuarios = new MUsuarios((int)registro.get("id"),
+            (int)registro.get("categoria"),
+            (int)registro.get("cedula"),
+            (String)registro.get("nombre"),
+            (String)registro.get("apellido"),
+            (String)registro.get("telefono"),
+            (String)registro.get("correo"),
+            (int)registro.get("carrera"),
+            (int)registro.get("semestre"),
+            (int)registro.get("estado"));
+        }
+
+        return usuarios;
+    }
     
 }

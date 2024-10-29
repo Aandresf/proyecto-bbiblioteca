@@ -5,10 +5,6 @@
 package biblioteca.vista;
 
 import biblioteca.controlador.*;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 import javax.swing.text.AbstractDocument;
 
 /**
@@ -25,6 +21,13 @@ public class VPrestamos extends javax.swing.JPanel {
         initComponents();
        formCreatePrestamo.setVisible(false);
       btnCrearPrestamo.setText("<html>NUEVO<br>PRESTAMO</html>");
+      lblUserId.setVisible(false);
+      lblUserEstado.setVisible(false);
+      lblUserInfo.setVisible(false);
+      lblInfoFormCreatePrestamo.setVisible(false);
+      lblLibEstado.setVisible(false);
+      lblLibId.setVisible(false);
+      lblLibInfo.setVisible(false);
     }
 
     /**
@@ -605,6 +608,21 @@ public class VPrestamos extends javax.swing.JPanel {
 
     private void btnUserSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserSearchMouseClicked
         // TODO add your handling code here:
+        
+        new VFuncionesPrestamos().buscar(txtUserSearch,
+         txtUserCedula,
+          txtUserNombre,
+           txtUserCategoria,
+            txtUserCurso,
+             txtUserEstado,
+              lblUserId,
+               lblUserEstado,
+               lblUserInfo,
+               lblInfoFormCreatePrestamo);
+        
+        
+        
+        
     }//GEN-LAST:event_btnUserSearchMouseClicked
 
     private void btnLibSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLibSearchMouseClicked
@@ -652,6 +670,7 @@ public class VPrestamos extends javax.swing.JPanel {
     private void txtSearchPrestamoKeyTyped(java.awt.event.KeyEvent evt) {
         
         ((AbstractDocument) txtSearchPrestamo.getDocument()).setDocumentFilter(new Validaciones.filtroAlphaNumerico());
+        
         if (checkEstado.isSelected()){
             new VFuncionesPrestamos().filtrarTabla(tblPrestamos,"EN CURSO", txtSearchPrestamo.getText() );
         }else new VFuncionesPrestamos().filtrarTabla(tblPrestamos,txtSearchPrestamo.getText(),"");

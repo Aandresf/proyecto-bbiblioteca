@@ -5,6 +5,7 @@
 package biblioteca.vista;
 
 import  biblioteca.controlador.*;
+import biblioteca.modelo.MVistaUsuarios;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -174,6 +175,45 @@ public class VFuncionesPrestamos {
         lbl2.setText("");
         lbl3.setText("");
         lbl4.setText("FORMULARIO LIMPIADO");
+
+    }
+
+    // se ejecuta al presionar el boton de buscar en el formCrearPrestamo
+        public void buscar(JTextField txt1, // textbox con el usuario a buscar
+        JTextField txt2,
+        JTextField txt3,
+        JTextField txt4,
+        JTextField txt5,
+        JTextField txt6,
+        JLabel lbl1,
+        JLabel lbl2,
+        JLabel lbl3,
+        JLabel lbl4
+        ){
+
+        MVistaUsuarios user = new CUsuarios().obtenerUsuarioCampo("CEDULA", txt1.getText());
+
+            if (!(user == null)){
+
+                txt1.setText("");
+                txt2.setText(String.valueOf(user.getCedula()));
+                txt3.setText(user.getNombre());
+                txt4.setText(user.getCategoria());
+                txt5.setText(user.getCarrera());
+                txt6.setText(user.getUltimoPrestamo());
+        
+                lbl1.setText(String.valueOf(user.getId()));
+                lbl2.setText("");
+                lbl3.setText("");
+                lbl3.setVisible(false);
+
+            } else {
+                lbl3.setText("* USUARIO NO REGISTRADO");
+                txt1.setText("");
+                lbl3.setVisible(true);
+            }
+
+
 
     }
     

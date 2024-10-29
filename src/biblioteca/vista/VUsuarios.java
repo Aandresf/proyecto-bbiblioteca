@@ -999,7 +999,7 @@ public class VUsuarios extends javax.swing.JPanel {
     private void txtCursoActionPerformed(java.awt.event.ActionEvent evt) {}
 
     private void lblAddCursoMouseClicked(java.awt.event.MouseEvent evt) {
-        
+        txtCurso.setText("");
         fromCreateCurso.setVisible(true);
     }
 

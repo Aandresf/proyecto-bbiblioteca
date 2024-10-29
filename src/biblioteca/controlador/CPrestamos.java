@@ -54,6 +54,10 @@ public class CPrestamos {
         return new DAOPrestamos().eliminarPrestamo(id);
     }
 
+    public void obtenerUsuario(int cedula){
+        return new DAOPrestamos().obtenerUsuario(cedula);
+    }
+
 
     
 }

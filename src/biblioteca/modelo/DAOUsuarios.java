@@ -96,24 +96,22 @@ public class DAOUsuarios {
         return usuarios;
     }
     
-    public List obtenerUsuariosCampo(String campo, String valorCampo){
-        String q = "SELECT * FROM USUARIOS WHERE "+ campo +" = "+ valorCampo +";";
+    public MVistaUsuarios obtenerUsuarioCampo(String campo, String valorCampo){
+        String q = "SELECT * FROM \"DETALLES USUARIOS\" WHERE \""+ campo +"\" = "+ valorCampo +";";
+
         List<Map> registros = new Database().ejecutar(q);
-        List<MUsuarios> usuarios = new ArrayList();
+        MVistaUsuarios usuarios = null;
 
         for (Map registro : registros) {
-            MUsuarios usuario = new MUsuarios((int)registro.get("id"),
-            (int)registro.get("categoria"),
-            (int)registro.get("cedula"),
-            (String)registro.get("nombre"),
-            (String)registro.get("apellido"),
-            (String)registro.get("telefono"),
-            (String)registro.get("correo"),
-            (int)registro.get("carrera"),
-            (int)registro.get("semestre"),
-            (int)registro.get("estado"));
-
-            usuarios.add(usuario);
+            usuarios = new MVistaUsuarios(
+                (int)registro.get("ID USUARIO"),
+                (int)registro.get("CEDULA"),
+                (String)registro.get("NOMBRE"),
+                (String)registro.get("CATEGORIA"),
+                (int)registro.get("ID CATEGORIA"),
+                (String)registro.get("CARRERA"),
+                (registro.get("ULTIMO PRESTAMO").equals(0)) ? "SIN PRESTAMO" : (String)registro.get("ULTIMO PRESTAMO")
+                );
         }
 
         return usuarios;

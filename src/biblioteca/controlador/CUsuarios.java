@@ -43,6 +43,10 @@ public class CUsuarios {
         return new DAOUsuarios().obtenerUsuario(id);
     }
 
+    public MVistaUsuarios obtenerUsuarioCampo(String campo, String valor){
+        return new DAOUsuarios().obtenerUsuarioCampo(campo, valor);
+    }
+
     public DefaultTableModel mostarVistaUsuarios(){
 
         List<MVistaUsuarios> usuarios = new DAOUsuarios().obtenerVistaUsuarios();
