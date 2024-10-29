@@ -9,10 +9,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
@@ -150,5 +150,31 @@ public class VFuncionesPrestamos {
         }
         
         }
+
+    public void limpiar(JTextField txt1,
+                        JTextField txt2,
+                        JTextField txt3,
+                        JTextField txt4,
+                        JTextField txt5,
+                        JTextField txt6,
+                        JLabel lbl1,
+                        JLabel lbl2,
+                        JLabel lbl3,
+                        JLabel lbl4
+                        ){
+        
+        txt1.setText("");
+        txt2.setText("");
+        txt3.setText("");
+        txt4.setText("");
+        txt5.setText("");
+        txt6.setText("");
+
+        lbl1.setText("");
+        lbl2.setText("");
+        lbl3.setText("");
+        lbl4.setText("FORMULARIO LIMPIADO");
+
+    }
     
 }

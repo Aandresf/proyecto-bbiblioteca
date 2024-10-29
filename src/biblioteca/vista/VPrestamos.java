@@ -24,6 +24,7 @@ public class VPrestamos extends javax.swing.JPanel {
     public VPrestamos() {
         initComponents();
        formCreatePrestamo.setVisible(false);
+      btnCrearPrestamo.setText("<html>NUEVO<br>PRESTAMO</html>");
     }
 
     /**
@@ -77,14 +78,14 @@ public class VPrestamos extends javax.swing.JPanel {
         lblUserInfo = new javax.swing.JLabel();
         pnlMain = new javax.swing.JPanel();
         pnlBackground = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        btnEditarUsuario = new javax.swing.JButton();
-        btnEliminarUsuario = new javax.swing.JButton();
-        btnCrearUsuario = new javax.swing.JButton();
-        txfSearch = new javax.swing.JTextField();
+        checkEstado = new javax.swing.JCheckBox();
+        btnRecepcionarPrestamo = new javax.swing.JButton();
+        btnEliminarPrestamo = new javax.swing.JButton();
+        btnCrearPrestamo = new javax.swing.JButton();
+        txtSearchPrestamo = new javax.swing.JTextField();
         btnSearch = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPrestamos = new javax.swing.JTable();
 
         formCreatePrestamo.setLocation(new java.awt.Point(782, 186));
         formCreatePrestamo.setMinimumSize(new java.awt.Dimension(619, 680));
@@ -128,11 +129,6 @@ public class VPrestamos extends javax.swing.JPanel {
                 btnCreatePrestamoMouseClicked(evt);
             }
         });
-        btnCreatePrestamo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCreatePrestamoActionPerformed(evt);
-            }
-        });
         pnlCreatePrestamo.add(btnCreatePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, 190, 40));
 
         btnCleanFormPrestamo.setBackground(new java.awt.Color(230, 230, 230));
@@ -151,28 +147,11 @@ public class VPrestamos extends javax.swing.JPanel {
                 btnCleanFormPrestamoMouseClicked(evt);
             }
         });
-        btnCleanFormPrestamo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCleanFormPrestamoActionPerformed(evt);
-            }
-        });
         pnlCreatePrestamo.add(btnCleanFormPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 590, 160, 40));
 
         txtLibSearch.setBorder(null);
         txtLibSearch.setMargin(new java.awt.Insets(0, 10, 0, 0));
         txtLibSearch.setOpaque(true);
-        txtLibSearch.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txtLibSearchInputMethodTextChanged(evt);
-            }
-        });
-        txtLibSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLibSearchActionPerformed(evt);
-            }
-        });
         txtLibSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtLibSearchKeyTyped(evt);
@@ -244,6 +223,11 @@ public class VPrestamos extends javax.swing.JPanel {
 
         btnLibSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconSearch.png"))); // NOI18N
         btnLibSearch.setBorder(null);
+        btnLibSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLibSearchMouseClicked(evt);
+            }
+        });
 
         lblLibInfo.setForeground(new java.awt.Color(255, 0, 51));
         lblLibInfo.setText("* ");
@@ -328,18 +312,6 @@ public class VPrestamos extends javax.swing.JPanel {
         txtUserSearch.setBorder(null);
         txtUserSearch.setMargin(new java.awt.Insets(0, 10, 0, 0));
         txtUserSearch.setOpaque(true);
-        txtUserSearch.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txtUserSearchInputMethodTextChanged(evt);
-            }
-        });
-        txtUserSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUserSearchActionPerformed(evt);
-            }
-        });
         txtUserSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtUserSearchKeyTyped(evt);
@@ -411,6 +383,11 @@ public class VPrestamos extends javax.swing.JPanel {
 
         btnUserSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconSearch.png"))); // NOI18N
         btnUserSearch.setBorder(null);
+        btnUserSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUserSearchMouseClicked(evt);
+            }
+        });
 
         lblUserInfo.setForeground(new java.awt.Color(255, 0, 51));
         lblUserInfo.setText("* ");
@@ -525,97 +502,69 @@ public class VPrestamos extends javax.swing.JPanel {
         pnlBackground.setMinimumSize(new java.awt.Dimension(684, 685));
         pnlBackground.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jCheckBox1.setText("EN CURSO");
-        jCheckBox1.addItemListener(new java.awt.event.ItemListener() {
+        checkEstado.setText("EN CURSO");
+        checkEstado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jCheckBox1ItemStateChanged(evt);
+                checkEstadoItemStateChanged(evt);
             }
         });
-        jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jCheckBox1StateChanged(evt);
-            }
-        });
-        pnlBackground.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        pnlBackground.add(checkEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
-        btnEditarUsuario.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        btnEditarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconBookmarkAdd.png"))); // NOI18N
-        btnEditarUsuario.setText("RECEPCIONAR");
-        btnEditarUsuario.setToolTipText("");
-        btnEditarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnEditarUsuario.setIconTextGap(10);
-        btnEditarUsuario.setMargin(new java.awt.Insets(2, 1, 3, 14));
-        btnEditarUsuario.setMaximumSize(new java.awt.Dimension(125, 35));
-        btnEditarUsuario.setMinimumSize(new java.awt.Dimension(125, 35));
-        btnEditarUsuario.setPreferredSize(new java.awt.Dimension(125, 35));
-        btnEditarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRecepcionarPrestamo.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        btnRecepcionarPrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconBookmarkAdd.png"))); // NOI18N
+        btnRecepcionarPrestamo.setText("RECEPCIONAR");
+        btnRecepcionarPrestamo.setToolTipText("");
+        btnRecepcionarPrestamo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnRecepcionarPrestamo.setIconTextGap(10);
+        btnRecepcionarPrestamo.setMargin(new java.awt.Insets(2, 1, 3, 14));
+        btnRecepcionarPrestamo.setMaximumSize(new java.awt.Dimension(125, 35));
+        btnRecepcionarPrestamo.setMinimumSize(new java.awt.Dimension(125, 35));
+        btnRecepcionarPrestamo.setPreferredSize(new java.awt.Dimension(125, 35));
+        btnRecepcionarPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEditarUsuarioMouseClicked(evt);
+                btnRecepcionarPrestamoMouseClicked(evt);
             }
         });
-        btnEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarUsuarioActionPerformed(evt);
-            }
-        });
-        pnlBackground.add(btnEditarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, 160, 40));
+        pnlBackground.add(btnRecepcionarPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 80, 160, 40));
 
-        btnEliminarUsuario.setBackground(new java.awt.Color(102, 0, 0));
-        btnEliminarUsuario.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
-        btnEliminarUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconTrash.png"))); // NOI18N
-        btnEliminarUsuario.setText("ELIMINAR");
-        btnEliminarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnEliminarUsuario.setIconTextGap(10);
-        btnEliminarUsuario.setMargin(new java.awt.Insets(2, 1, 3, 14));
-        btnEliminarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnEliminarPrestamo.setBackground(new java.awt.Color(102, 0, 0));
+        btnEliminarPrestamo.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        btnEliminarPrestamo.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarPrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconTrash.png"))); // NOI18N
+        btnEliminarPrestamo.setText("ELIMINAR");
+        btnEliminarPrestamo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnEliminarPrestamo.setIconTextGap(10);
+        btnEliminarPrestamo.setMargin(new java.awt.Insets(2, 1, 3, 14));
+        btnEliminarPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarUsuarioMouseClicked(evt);
+                btnEliminarPrestamoMouseClicked(evt);
             }
         });
-        pnlBackground.add(btnEliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 680, 160, 40));
+        pnlBackground.add(btnEliminarPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 680, 160, 40));
 
-        btnCrearUsuario.setBackground(new java.awt.Color(153, 255, 153));
-        btnCrearUsuario.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        btnCrearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAdd.png"))); // NOI18N
-        btnCrearUsuario.setText("CREAR PRESTAMO");
-        btnCrearUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCrearUsuario.setIconTextGap(10);
-        btnCrearUsuario.setMargin(new java.awt.Insets(2, 1, 3, 14));
-        btnCrearUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCrearPrestamo.setBackground(new java.awt.Color(153, 255, 153));
+        btnCrearPrestamo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        btnCrearPrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAdd.png"))); // NOI18N
+        btnCrearPrestamo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCrearPrestamo.setIconTextGap(10);
+        btnCrearPrestamo.setMargin(new java.awt.Insets(2, 1, 3, 14));
+        btnCrearPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCrearUsuarioMouseClicked(evt);
+                btnCrearPrestamoMouseClicked(evt);
             }
         });
-        btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearUsuarioActionPerformed(evt);
-            }
-        });
-        pnlBackground.add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, -1, 40));
+        pnlBackground.add(btnCrearPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, 160, 60));
 
-        txfSearch.setBackground(new java.awt.Color(242, 242, 242));
-        txfSearch.setBorder(null);
-        txfSearch.setMargin(new java.awt.Insets(0, 10, 0, 0));
-        txfSearch.setOpaque(true);
-        txfSearch.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txfSearchInputMethodTextChanged(evt);
-            }
-        });
-        txfSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfSearchActionPerformed(evt);
-            }
-        });
-        txfSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSearchPrestamo.setBackground(new java.awt.Color(242, 242, 242));
+        txtSearchPrestamo.setBorder(null);
+        txtSearchPrestamo.setMargin(new java.awt.Insets(0, 10, 0, 0));
+        txtSearchPrestamo.setOpaque(true);
+        txtSearchPrestamo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txfSearchKeyTyped(evt);
+                txtSearchPrestamoKeyTyped(evt);
             }
         });
-        pnlBackground.add(txfSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 280, 40));
+        pnlBackground.add(txtSearchPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 280, 40));
 
         btnSearch.setBackground(new java.awt.Color(242, 242, 242));
         btnSearch.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -624,7 +573,7 @@ public class VPrestamos extends javax.swing.JPanel {
         btnSearch.setOpaque(true);
         pnlBackground.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 40, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPrestamos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -635,7 +584,7 @@ public class VPrestamos extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPrestamos);
 
         pnlBackground.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 980, 550));
 
@@ -644,7 +593,42 @@ public class VPrestamos extends javax.swing.JPanel {
         add(pnlMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 730));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCrearUsuarioMouseClicked(java.awt.event.MouseEvent evt) {
+    private void txtUserSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserSearchKeyTyped
+        // TODO add your handling code here:
+        ((AbstractDocument) txtUserSearch.getDocument()).setDocumentFilter(new Validaciones.filtroNumerico());
+    }//GEN-LAST:event_txtUserSearchKeyTyped
+    
+    private void txtLibSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLibSearchKeyTyped
+        // TODO add your handling code here:
+        ((AbstractDocument) txtLibSearch.getDocument()).setDocumentFilter(new Validaciones.filtroNumerico());
+    }//GEN-LAST:event_txtLibSearchKeyTyped
+
+    private void btnUserSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserSearchMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUserSearchMouseClicked
+
+    private void btnLibSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLibSearchMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLibSearchMouseClicked
+
+    private void btnCancelCreatePrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelCreatePrestamoMouseClicked
+        // TODO add your handling code here:
+
+        formCreatePrestamo.setVisible(false);
+    }//GEN-LAST:event_btnCancelCreatePrestamoMouseClicked
+
+    private void btnCleanFormPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCleanFormPrestamoMouseClicked
+        // TODO add your handling code here:
+
+        new VFuncionesPrestamos().limpiar(txtUserSearch, txtUserCedula, txtUserNombre, txtUserCategoria, txtUserCurso, txtUserEstado, lblUserEstado, lblUserId, lblUserInfo, lblInfoFormCreatePrestamo);
+        new VFuncionesPrestamos().limpiar(txtLibSearch, txtLibCodigo, txtLibTitulo, txtLibAutor, txtLibCategoria, txtLibUbicacion, lblLibEstado, lblLibId, lblLibInfo, lblInfoFormCreatePrestamo);
+    }//GEN-LAST:event_btnCleanFormPrestamoMouseClicked
+
+    private void btnCreatePrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCreatePrestamoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCreatePrestamoMouseClicked
+
+    private void btnCrearPrestamoMouseClicked(java.awt.event.MouseEvent evt) {
         
         
         formCreatePrestamo.setVisible(true);
@@ -652,94 +636,54 @@ public class VPrestamos extends javax.swing.JPanel {
         // cargarFormCrear();
     }
 
-    private void btnCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {    }
-
-    private void btnEditarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {
+    private void btnRecepcionarPrestamoMouseClicked(java.awt.event.MouseEvent evt) {
         
-        // String usuario = tblUsers.getModel().getValueAt(tblUsers.getSelectedRow(), 0).toString();
-        // JOptionPane.showMessageDialog(pnlUsuarioMain, usuario);
-        
-        // cargarFormModificar();
-
-        new VFuncionesPrestamos().recepcionarPrestamo(jTable1);
-        new VFuncionesPrestamos().mostrarPrestamos(jTable1);
+        new VFuncionesPrestamos().recepcionarPrestamo(tblPrestamos);
+        new VFuncionesPrestamos().mostrarPrestamos(tblPrestamos);
         
     }
 
-    private void btnEditarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {}
-
-    private void btnEliminarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {
+    private void btnEliminarPrestamoMouseClicked(java.awt.event.MouseEvent evt) {
         
-        // deleteUser();
-        // mostrarUsuarios();
-        new VFuncionesPrestamos().eliminarPrestamo(jTable1);
-        new VFuncionesPrestamos().mostrarPrestamos(jTable1);
+        new VFuncionesPrestamos().eliminarPrestamo(tblPrestamos);
+        new VFuncionesPrestamos().mostrarPrestamos(tblPrestamos);
     }
     
-    private void txfSearchInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {}
-
-    private void txfSearchActionPerformed(java.awt.event.ActionEvent evt) {}
-
-    private void txfSearchKeyTyped(java.awt.event.KeyEvent evt) {
+    private void txtSearchPrestamoKeyTyped(java.awt.event.KeyEvent evt) {
         
-        ((AbstractDocument) txfSearch.getDocument()).setDocumentFilter(new Validaciones.filtroAlphaNumerico());
-        if (jCheckBox1.isSelected()){
-            new VFuncionesPrestamos().filtrarTabla(jTable1,"EN CURSO", txfSearch.getText() );
-        }else new VFuncionesPrestamos().filtrarTabla(jTable1,txfSearch.getText(),"");
+        ((AbstractDocument) txtSearchPrestamo.getDocument()).setDocumentFilter(new Validaciones.filtroAlphaNumerico());
+        if (checkEstado.isSelected()){
+            new VFuncionesPrestamos().filtrarTabla(tblPrestamos,"EN CURSO", txtSearchPrestamo.getText() );
+        }else new VFuncionesPrestamos().filtrarTabla(tblPrestamos,txtSearchPrestamo.getText(),"");
         
     }
-
-    private void btnEliminarUsuario1MouseClicked(java.awt.event.MouseEvent evt) {}
-
-    private void btnCrearUsuario1MouseClicked(java.awt.event.MouseEvent evt) {}
-
-    private void btnCrearUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {}
-
-    private void btnEditarUsuario1MouseClicked(java.awt.event.MouseEvent evt) {}
-
-    private void btnEditarUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {}
-
-    private void txfSearch1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {}
-
-    private void txfSearch1ActionPerformed(java.awt.event.ActionEvent evt) {}
-
-    private void txfSearch1KeyTyped(java.awt.event.KeyEvent evt) {}
-
-    private void txfSearch2InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {}
-
-    private void txfSearch2ActionPerformed(java.awt.event.ActionEvent evt) {}
-
-    private void txfSearch2KeyTyped(java.awt.event.KeyEvent evt) {}
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {
         
-        new VFuncionesPrestamos().mostrarPrestamos(jTable1);
+        new VFuncionesPrestamos().mostrarPrestamos(tblPrestamos);
     }
 
-    private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {}
-
-    private void jCheckBox1ItemStateChanged(java.awt.event.ItemEvent evt) {
+    private void checkEstadoItemStateChanged(java.awt.event.ItemEvent evt) {
         
-        if (jCheckBox1.isSelected()){
-            new VFuncionesPrestamos().filtrarTabla(jTable1,"EN CURSO", txfSearch.getText() );
-        }else new VFuncionesPrestamos().filtrarTabla(jTable1,txfSearch.getText(),"");
+        if (checkEstado.isSelected()){
+            new VFuncionesPrestamos().filtrarTabla(tblPrestamos,"EN CURSO", txtSearchPrestamo.getText() );
+        }else new VFuncionesPrestamos().filtrarTabla(tblPrestamos,txtSearchPrestamo.getText(),"");
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelCreatePrestamo;
     private javax.swing.JButton btnCleanFormPrestamo;
-    private javax.swing.JButton btnCrearUsuario;
+    private javax.swing.JButton btnCrearPrestamo;
     private javax.swing.JButton btnCreatePrestamo;
-    private javax.swing.JButton btnEditarUsuario;
-    private javax.swing.JButton btnEliminarUsuario;
+    private javax.swing.JButton btnEliminarPrestamo;
     private javax.swing.JButton btnLibSearch;
+    private javax.swing.JButton btnRecepcionarPrestamo;
     private javax.swing.JLabel btnSearch;
     private javax.swing.JButton btnUserSearch;
+    private javax.swing.JCheckBox checkEstado;
     private javax.swing.JFrame formCreatePrestamo;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     protected javax.swing.JLabel lblCategoria;
     protected javax.swing.JLabel lblCategoria1;
     protected javax.swing.JLabel lblCategoria2;
@@ -764,13 +708,14 @@ public class VPrestamos extends javax.swing.JPanel {
     private javax.swing.JPanel pnlLib;
     private javax.swing.JPanel pnlMain;
     private javax.swing.JPanel pnlUser;
-    protected javax.swing.JTextField txfSearch;
+    private javax.swing.JTable tblPrestamos;
     protected javax.swing.JTextField txtLibAutor;
     protected javax.swing.JTextField txtLibCategoria;
     protected javax.swing.JTextField txtLibCodigo;
     protected javax.swing.JTextField txtLibSearch;
     protected javax.swing.JTextField txtLibTitulo;
     protected javax.swing.JTextField txtLibUbicacion;
+    protected javax.swing.JTextField txtSearchPrestamo;
     protected javax.swing.JTextField txtUserCategoria;
     protected javax.swing.JTextField txtUserCedula;
     protected javax.swing.JTextField txtUserCurso;
