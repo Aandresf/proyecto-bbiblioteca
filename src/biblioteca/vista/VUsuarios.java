@@ -380,6 +380,11 @@ public class VUsuarios extends javax.swing.JPanel {
         cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxCategoria.setBorder(null);
         cbxCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        cbxCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCategoriaActionPerformed(evt);
+            }
+        });
 
         lblCurso.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         lblCurso.setText("CURSO");
@@ -728,7 +733,7 @@ public class VUsuarios extends javax.swing.JPanel {
         });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlUsuarioHeader.setBackground(new java.awt.Color(0, 51, 102));
+        pnlUsuarioHeader.setBackground(new java.awt.Color(71, 255, 163));
         pnlUsuarioHeader.setMinimumSize(new java.awt.Dimension(1000, 60));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 204));
@@ -755,7 +760,7 @@ public class VUsuarios extends javax.swing.JPanel {
 
         add(pnlUsuarioHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 60));
 
-        pnlUsuarioMain.setBackground(new java.awt.Color(0, 255, 51));
+        pnlUsuarioMain.setBackground(new java.awt.Color(153, 255, 204));
         pnlUsuarioMain.setBorder(javax.swing.BorderFactory.createCompoundBorder(null, javax.swing.BorderFactory.createEmptyBorder(4, 4, 4, 4)));
         pnlUsuarioMain.setMinimumSize(new java.awt.Dimension(1000, 672));
         pnlUsuarioMain.setPreferredSize(new java.awt.Dimension(1000, 672));
@@ -870,6 +875,29 @@ public class VUsuarios extends javax.swing.JPanel {
         add(pnlUsuarioMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1000, 672));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCategoriaActionPerformed
+        // TODO add your handling code here:
+
+        if (cbxCategoria.getSelectedIndex() != 1){
+            lblCurso.setVisible(false);
+            cbxCarrera.setVisible(false);
+            lblAddCurso.setVisible(false);
+            jSeparator9.setVisible(false);
+            lblSemestre.setVisible(false);
+            txtSemestre.setVisible(false);
+            jSeparator10.setVisible(false);
+        } else {
+            lblCurso.setVisible(true);
+            cbxCarrera.setVisible(true);
+            lblAddCurso.setVisible(true);
+            jSeparator9.setVisible(true);
+            lblSemestre.setVisible(true);
+            txtSemestre.setVisible(true);
+            jSeparator10.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_cbxCategoriaActionPerformed
+
 
     protected void jButton1ActionPerformed(ActionEvent evt) {}
 
@@ -977,14 +1005,12 @@ public class VUsuarios extends javax.swing.JPanel {
 
     private void btnAceptarCursoMouseClicked(java.awt.event.MouseEvent evt) {
         
-        JOptionPane.showMessageDialog(fromCreateCurso,txtCurso.getText().toUpperCase());
-
-        JOptionPane.showMessageDialog(pnlFormUsuario, "Carreras Registradas: " + crearCarrera());
-
-        cargarCarreras();
-
+        int result = crearCarrera();
+        if(result > 0){
+            cargarCarreras();
             txtCurso.setText("");
-
+            fromCreateCurso.setVisible(false);
+        }
     }
 
     private void btnLimpiarCursoMouseClicked(java.awt.event.MouseEvent evt) {
