@@ -4,7 +4,7 @@
  */
 package biblioteca.controlador;
 
-import biblioteca.modelo.DAOPrestamos;
+import biblioteca.modelo.DAO.DAOPrestamos;
 import biblioteca.modelo.MVistaLibros;
 import biblioteca.modelo.MVistaPrestamos;
 import java.util.List;

@@ -4,6 +4,7 @@
  */
 package biblioteca.controlador;
 
+import biblioteca.modelo.DAO.DAOUsuarios;
 import biblioteca.modelo.*;
 import java.util.*;
 import javax.swing.table.DefaultTableModel;

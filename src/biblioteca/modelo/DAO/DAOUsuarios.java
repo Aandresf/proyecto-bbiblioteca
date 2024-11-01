@@ -1,6 +1,9 @@
 
-package biblioteca.modelo;
+package biblioteca.modelo.DAO;
 
+import biblioteca.modelo.MUtils.Database;
+import biblioteca.modelo.MUsuarios;
+import biblioteca.modelo.MVistaUsuarios;
 import java.util.*;
 
 public class DAOUsuarios {
