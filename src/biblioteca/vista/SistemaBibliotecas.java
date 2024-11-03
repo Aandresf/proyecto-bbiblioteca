@@ -13,8 +13,8 @@ import biblioteca.controlador.*;
 public class SistemaBibliotecas extends javax.swing.JFrame {
     
     public VDashboard dashboard;
-    public CPrestamos controladorPrestamos;
     public VPrestamos prestamos;
+    public CPrestamos controladorPrestamos;
     public VLibros libros;
     public VUsuarios usuarios;
     public VSedes sedes;

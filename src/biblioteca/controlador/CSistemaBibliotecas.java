@@ -31,6 +31,7 @@ public class CSistemaBibliotecas {
     public void filterSede(){
         String sedeSeleccionada = vista.cbxSedes.getSelectedItem().toString();
 
+        // si el panel de prestamo es visible, asigna la sede a los filtros de tabla.
         if(vista.prestamos.isShowing()){
 
             vista.controladorPrestamos.sede = sedeSeleccionada;
@@ -40,6 +41,7 @@ public class CSistemaBibliotecas {
 
     }
 
+    // establece el estilo correspondiente al boton despues de retirar el mouse
     private void btnExited(JPanel panel, JLabel btn, String ico, String icoSelected){
         System.out.println(panel.getClass() + " mostrado " + panel.isShowing());
         if(panel.isShowing()){
@@ -53,6 +55,7 @@ public class CSistemaBibliotecas {
         }
     }
 
+    // hace visible el panel y asigna un estilo al boton
     private void btnSelected(JPanel panel, JLabel btn, String ico){
 
         panel.setVisible(true);
@@ -63,6 +66,7 @@ public class CSistemaBibliotecas {
         btn.setForeground(Color.WHITE);
     }
 
+    // oculta el panel y restablece el estilo del boton
     private void btnDefault(JPanel panel, JLabel btn, String ico){
         panel.setVisible(false);
         System.out.println("Panel " + panel.getClass() + " oculto");
@@ -72,6 +76,7 @@ public class CSistemaBibliotecas {
         btn.setForeground(Color.BLACK);
     }
 
+    // esilos para el menu cuando el mouse esta sobre el
     private void btnHover(JLabel btn, String ico){
         btn.setBackground(new java.awt.Color(46, 144, 232));
         btn.setIcon(new javax.swing.ImageIcon(getClass().getResource(ico)));
@@ -81,7 +86,7 @@ public class CSistemaBibliotecas {
 
 
 
-
+    // Agrega todas las funcionalidades a la interfaz
     private void actions(){
 
         vista.cbxSedes.addActionListener(new java.awt.event.ActionListener() {

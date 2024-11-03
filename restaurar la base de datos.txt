@@ -1,0 +1,6 @@
+pg_restore -U postgres -h localhost -d BDBIBLIOTECAS "C:\Users\arnal\Downloads\R_BDBIBLIOTECAS.dump"
+
+
+
+-- cambiar BDBILIOTECAS por el nombre de la base de datos creada
+-- cambiar la ruta a donde esta el archivo de respaldo
