@@ -28,6 +28,7 @@ public class VPrestamos extends javax.swing.JPanel {
       lblLibEstado.setVisible(false);
       lblLibId.setVisible(false);
       lblLibInfo.setText("");
+
     }
 
     /**
@@ -109,7 +110,6 @@ public class VPrestamos extends javax.swing.JPanel {
         btnCancelCreatePrestamo.setBackground(new java.awt.Color(102, 0, 0));
         btnCancelCreatePrestamo.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         btnCancelCreatePrestamo.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelCreatePrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconCancel.png"))); // NOI18N
         btnCancelCreatePrestamo.setText("CANCELAR");
         btnCancelCreatePrestamo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnCancelCreatePrestamo.setIconTextGap(10);
@@ -585,7 +585,6 @@ public class VPrestamos extends javax.swing.JPanel {
         btnEliminarPrestamo.setBackground(new java.awt.Color(102, 0, 0));
         btnEliminarPrestamo.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         btnEliminarPrestamo.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarPrestamo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconTrash.png"))); // NOI18N
         btnEliminarPrestamo.setText("ELIMINAR");
         btnEliminarPrestamo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnEliminarPrestamo.setIconTextGap(10);

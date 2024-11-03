@@ -4,20 +4,6 @@
  */
 package biblioteca.vista;
 
-import biblioteca.controlador.CUtils.Validaciones;
-import biblioteca.controlador.*;
-
-import biblioteca.modelo.MCarrera;
-import biblioteca.modelo.MUsuarios;
-import java.awt.event.ActionEvent;
-import java.awt.event.InputMethodEvent;
-import javax.swing.JOptionPane;
-import javax.swing.RowFilter;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
-import javax.swing.text.AbstractDocument;
-
 /**
  *
  * @author arnal
@@ -28,10 +14,9 @@ public class VUsuarios extends javax.swing.JPanel {
      * Creates new form Dashboard
      */
 
-    public MUsuarios insertUser;   
     
     public VUsuarios() {
-        // = new VFUsuarisos();
+
         initComponents();
         lblId.setVisible(false);
         lblEstado.setVisible(false);
@@ -39,170 +24,6 @@ public class VUsuarios extends javax.swing.JPanel {
         lblInfoCorreo.setVisible(false);
 
     }
-
-    private void deleteUser(){
-
-        if(tblUsers.getSelectedRow() != -1){
-            String usuario = tblUsers.getModel().getValueAt(tblUsers.getSelectedRow(), 0).toString();
-            JOptionPane.showMessageDialog(pnlUsuarioMain, new CUsuarios().elimiarUsuario(usuario) + "usuario eliminado");
-        } else JOptionPane.showMessageDialog(pnlUsuarioMain, "Selecciones un usuario a eliminar");
-    }
-
-    private void mostrarUsuarios(){
-        tblUsers.setModel(new CUsuarios().mostarVistaUsuarios());
-        TableColumnModel modeloColumnas = tblUsers.getColumnModel();
-        modeloColumnas.removeColumn(modeloColumnas.getColumn(0));
-    }
-
-    private int ingresarSemestre(){
-
-        int semestre = 0;
-
-        if (!txtSemestre.getText().isEmpty()){
-            try {
-                semestre = Integer.parseInt(txtSemestre.getText());
-            } catch (Exception e) {}
-        }
-        return semestre;
-    };
-
-    private void limpiar(){
-        txtCedula.setText("");
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtTelefono.setText("");
-        txtCorreo.setText("");
-        txtSemestre.setText("");
-
-        cbxCarrera.setSelectedIndex(0);
-        cbxCategoria.setSelectedIndex(0);
-
-        lblId.setText("");
-
-    }
-
-    private void cargarCarreras(){ cbxCarrera.setModel(new CCarreras().mostrarCarreras()); }
-
-    private void cargarCategorias(){ cbxCategoria.setModel(new CCarreras().mostrarCategorias()); }
-
-    private int crearUsuario(){
-        return new CUsuarios().crearUsuario(
-                new MUsuarios(
-                    cbxCategoria.getSelectedIndex()+1,
-                    Integer.parseInt(txtCedula.getText()),
-                    txtNombre.getText().toUpperCase(),
-                    txtApellido.getText().toUpperCase(),
-                    txtTelefono.getText(),
-                    txtCorreo.getText().toUpperCase(),
-                    cbxCarrera.getSelectedIndex()+1,
-                    ingresarSemestre(),                            
-                    1
-                    )
-            );
-    }
-
-    private int modificarUsuario(){
-        return new CUsuarios().modificarusuario(
-                new MUsuarios(
-                    Integer.parseInt(lblId.getText()),
-                    cbxCategoria.getSelectedIndex()+1,
-                    Integer.parseInt(txtCedula.getText()),
-                    txtNombre.getText().toUpperCase(),
-                    txtApellido.getText().toUpperCase(),
-                    txtTelefono.getText().isBlank() ? "" : txtTelefono.getText(),
-                    txtCorreo.getText().toUpperCase(),
-                    cbxCarrera.getSelectedIndex()+1,
-                    ingresarSemestre(),                            
-                    Integer.parseInt(lblEstado.getText())
-                    )
-            );
-    }
-
-    private void cargarFormModificar(){
-
-        int id = -1;
-
-        if (tblUsers.getSelectedRow() != -1){
-            id = Integer.parseInt(tblUsers.getModel().getValueAt(tblUsers.getSelectedRow(), 0).toString());
-        }
-        
-        if (id>=0) {
-            limpiar();
-            frameFormUsuarios.setVisible(true);
-            cargarCarreras();
-            cargarCategorias();
-            lblTitle.setText("MODIFICAR USUARIO");
-            txtCedula.setEnabled(false);
-            lblControl.setText("2");
-            
-            MUsuarios user = new CUsuarios().obtenerUsuario(id);
-            lblId.setText(String.valueOf(user.getId()));
-            lblEstado.setText(String.valueOf(user.getEstado()));
-            txtCedula.setText(String.valueOf(user.getCedula()));
-            txtNombre.setText(user.getNombre());
-            txtApellido.setText(user.getApellido());
-            txtTelefono.setText(user.getTelefono());
-            txtCorreo.setText(user.getCorreo());
-            txtSemestre.setText(String.valueOf(user.getSemestre()));
-
-            int cat =  user.getCategoria() - 1 ;
-            int car =  user.getCarrera() - 1 ;
-            cbxCategoria.setSelectedIndex(cat);
-            cbxCarrera.setSelectedIndex(car);
-            
-        } else {
-            JOptionPane.showMessageDialog(pnlUsuarioMain, "Seleccione el Usuario a modificar.");
-        }
-        
-    }
-
-    private void cargarFormCrear(){
-        limpiar();
-        frameFormUsuarios.setVisible(true);
-        cargarCarreras();
-        cargarCategorias();
-        lblTitle.setText("CREAR USUARIO");
-        txtCedula.setEnabled(true);
-        lblControl.setText("1");
-    }
-
-    private int crearCarrera(){
-        return new CCarreras().crearCarrera(new MCarrera(txtCurso.getText().toUpperCase()));
-    }
-
-    private void filtrarTabla() {
-
-        // Crear el TableRowSorter y asignarlo al JTable
-        TableRowSorter<TableModel> filtro = new TableRowSorter<>(tblUsers.getModel());
-        tblUsers.setRowSorter(filtro);
-
-        String buscar = txfSearch.getText();
-        if (buscar.trim().length() == 0) {
-            filtro.setRowFilter(null);
-        } else {
-            filtro.setRowFilter(RowFilter.regexFilter("(?i)" + buscar));
-        }
-}
-
-    public void clickBtnAceptar(){
-    int control = Integer.parseInt(lblControl.getText());
-
-    if (control == 1){
-        if (!txtCedula.getText().isBlank() && !txtNombre.getText().isBlank() && !txtApellido.getText().isBlank()) {
-                JOptionPane.showMessageDialog(pnlFormUsuario,"Usuarios registrados: "+ crearUsuario());   
-                mostrarUsuarios();
-                limpiar();
-                frameFormUsuarios.setVisible(false);
-            } else JOptionPane.showMessageDialog(pnlFormUsuario, "Complete los campos Cedula, Nombre y Apellidos");
-
-    } else if (control == 2){
-        JOptionPane.showMessageDialog(frameFormUsuarios, "usuario " + lblId.getText() + " modificado");
-        modificarUsuario();
-        mostrarUsuarios();
-        limpiar();
-        frameFormUsuarios.setVisible(false);
-    }
-}
 
 
 
@@ -274,11 +95,6 @@ public class VUsuarios extends javax.swing.JPanel {
         frameFormUsuarios.setResizable(false);
         frameFormUsuarios.setSize(new java.awt.Dimension(363, 710));
         frameFormUsuarios.setType(java.awt.Window.Type.UTILITY);
-        frameFormUsuarios.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                frameFormUsuariosComponentShown(evt);
-            }
-        });
 
         pnlFormUsuario.setBackground(new java.awt.Color(255, 255, 255));
         pnlFormUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 255), 4, true));
@@ -305,11 +121,6 @@ public class VUsuarios extends javax.swing.JPanel {
         txtCedula.setBorder(null);
         txtCedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtCedula.setOpaque(true);
-        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCedulaKeyTyped(evt);
-            }
-        });
 
         lblNombre.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblNombre.setText("NOMBRES");
@@ -318,11 +129,6 @@ public class VUsuarios extends javax.swing.JPanel {
         txtNombre.setBorder(null);
         txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNombre.setOpaque(true);
-        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreKeyTyped(evt);
-            }
-        });
 
         lblApellido.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblApellido.setText("APELLIDOS");
@@ -331,11 +137,6 @@ public class VUsuarios extends javax.swing.JPanel {
         txtApellido.setBorder(null);
         txtApellido.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtApellido.setOpaque(true);
-        txtApellido.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtApellidoKeyTyped(evt);
-            }
-        });
 
         lblTelefono.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         lblTelefono.setText("TELEFONO");
@@ -344,11 +145,6 @@ public class VUsuarios extends javax.swing.JPanel {
         txtTelefono.setBorder(null);
         txtTelefono.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtTelefono.setOpaque(true);
-        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtTelefonoKeyTyped(evt);
-            }
-        });
 
         lblCorreo.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         lblCorreo.setText("CORREO");
@@ -357,16 +153,6 @@ public class VUsuarios extends javax.swing.JPanel {
         txtCorreo.setBorder(null);
         txtCorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtCorreo.setOpaque(true);
-        txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCorreoFocusLost(evt);
-            }
-        });
-        txtCorreo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCorreoKeyTyped(evt);
-            }
-        });
 
         lblCategoria.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblCategoria.setText("CATEGORIA");
@@ -376,11 +162,6 @@ public class VUsuarios extends javax.swing.JPanel {
         cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxCategoria.setBorder(null);
         cbxCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        cbxCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxCategoriaActionPerformed(evt);
-            }
-        });
 
         lblCurso.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         lblCurso.setText("CURSO");
@@ -395,11 +176,6 @@ public class VUsuarios extends javax.swing.JPanel {
         lblAddCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAddCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAdd.png"))); // NOI18N
         lblAddCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblAddCurso.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblAddCursoMouseClicked(evt);
-            }
-        });
 
         btnAceptar.setBackground(new java.awt.Color(204, 255, 204));
         btnAceptar.setFont(new java.awt.Font("Roboto Medium", 2, 18)); // NOI18N
@@ -408,11 +184,6 @@ public class VUsuarios extends javax.swing.JPanel {
         btnAceptar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptar.setOpaque(true);
-        btnAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAceptarMouseClicked(evt);
-            }
-        });
 
         btnLimpiar.setFont(new java.awt.Font("Roboto Medium", 2, 18)); // NOI18N
         btnLimpiar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -420,11 +191,6 @@ public class VUsuarios extends javax.swing.JPanel {
         btnLimpiar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLimpiar.setOpaque(true);
-        btnLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLimpiarMouseClicked(evt);
-            }
-        });
 
         btnEliminar.setBackground(new java.awt.Color(102, 0, 0));
         btnEliminar.setFont(new java.awt.Font("Roboto Medium", 2, 18)); // NOI18N
@@ -434,11 +200,6 @@ public class VUsuarios extends javax.swing.JPanel {
         btnEliminar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.setOpaque(true);
-        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarMouseClicked(evt);
-            }
-        });
 
         lblSemestre.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         lblSemestre.setText("SEMESTRE");
@@ -447,11 +208,6 @@ public class VUsuarios extends javax.swing.JPanel {
         txtSemestre.setBorder(null);
         txtSemestre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtSemestre.setOpaque(true);
-        txtSemestre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtSemestreKeyTyped(evt);
-            }
-        });
 
         lblInfoCorreo.setForeground(new java.awt.Color(255, 0, 51));
         lblInfoCorreo.setText("* Correo Invalido");
@@ -595,16 +351,6 @@ public class VUsuarios extends javax.swing.JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(197, 165));
 
         txtCurso.setToolTipText("");
-        txtCurso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCursoActionPerformed(evt);
-            }
-        });
-        txtCurso.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCursoKeyTyped(evt);
-            }
-        });
 
         lblTitleCurso.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblTitleCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -616,11 +362,6 @@ public class VUsuarios extends javax.swing.JPanel {
         btnLimpiarCurso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btnLimpiarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLimpiarCurso.setOpaque(true);
-        btnLimpiarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLimpiarCursoMouseClicked(evt);
-            }
-        });
 
         btnAceptarCurso.setBackground(new java.awt.Color(204, 255, 204));
         btnAceptarCurso.setFont(new java.awt.Font("Roboto Medium", 2, 18)); // NOI18N
@@ -629,11 +370,6 @@ public class VUsuarios extends javax.swing.JPanel {
         btnAceptarCurso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btnAceptarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptarCurso.setOpaque(true);
-        btnAceptarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAceptarCursoMouseClicked(evt);
-            }
-        });
 
         btnEliminarCurso.setBackground(new java.awt.Color(102, 0, 0));
         btnEliminarCurso.setFont(new java.awt.Font("Roboto Medium", 2, 18)); // NOI18N
@@ -643,11 +379,6 @@ public class VUsuarios extends javax.swing.JPanel {
         btnEliminarCurso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         btnEliminarCurso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminarCurso.setOpaque(true);
-        btnEliminarCurso.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarCursoMouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -704,11 +435,6 @@ public class VUsuarios extends javax.swing.JPanel {
 
         setMinimumSize(new java.awt.Dimension(1000, 732));
         setPreferredSize(new java.awt.Dimension(1000, 732));
-        addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                formComponentShown(evt);
-            }
-        });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlUsuarioHeader.setBackground(new java.awt.Color(71, 255, 163));
@@ -760,23 +486,6 @@ public class VUsuarios extends javax.swing.JPanel {
         txfSearch.setBorder(null);
         txfSearch.setMargin(new java.awt.Insets(0, 10, 0, 0));
         txfSearch.setOpaque(true);
-        txfSearch.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                txfSearchInputMethodTextChanged(evt);
-            }
-        });
-        txfSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txfSearchActionPerformed(evt);
-            }
-        });
-        txfSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txfSearchKeyTyped(evt);
-            }
-        });
         pnlTbUsuarios.add(txfSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, 40));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -796,16 +505,6 @@ public class VUsuarios extends javax.swing.JPanel {
         btnCrearUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnCrearUsuario.setIconTextGap(10);
         btnCrearUsuario.setMargin(new java.awt.Insets(2, 1, 3, 14));
-        btnCrearUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCrearUsuarioMouseClicked(evt);
-            }
-        });
-        btnCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearUsuarioActionPerformed(evt);
-            }
-        });
         pnlTbUsuarios.add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, 40));
 
         btnEditarUsuario.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
@@ -818,36 +517,15 @@ public class VUsuarios extends javax.swing.JPanel {
         btnEditarUsuario.setMaximumSize(new java.awt.Dimension(125, 35));
         btnEditarUsuario.setMinimumSize(new java.awt.Dimension(125, 35));
         btnEditarUsuario.setPreferredSize(new java.awt.Dimension(125, 35));
-        btnEditarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEditarUsuarioMouseClicked(evt);
-            }
-        });
-        btnEditarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarUsuarioActionPerformed(evt);
-            }
-        });
         pnlTbUsuarios.add(btnEditarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, 160, 40));
 
         btnEliminarUsuario.setBackground(new java.awt.Color(102, 0, 0));
         btnEliminarUsuario.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         btnEliminarUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconTrash.png"))); // NOI18N
         btnEliminarUsuario.setText("ELIMINAR");
         btnEliminarUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnEliminarUsuario.setIconTextGap(10);
         btnEliminarUsuario.setMargin(new java.awt.Insets(2, 1, 3, 14));
-        btnEliminarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnEliminarUsuarioMouseClicked(evt);
-            }
-        });
-        btnEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarUsuarioActionPerformed(evt);
-            }
-        });
         pnlTbUsuarios.add(btnEliminarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 610, 160, 40));
 
         pnlUsuarioMain.add(pnlTbUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 980, 652));
@@ -855,212 +533,53 @@ public class VUsuarios extends javax.swing.JPanel {
         add(pnlUsuarioMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1000, 672));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCategoriaActionPerformed
-        // TODO add your handling code here:
-
-        if (cbxCategoria.getSelectedIndex() != 1){
-            lblCurso.setVisible(false);
-            cbxCarrera.setVisible(false);
-            lblAddCurso.setVisible(false);
-            
-            lblSemestre.setVisible(false);
-            txtSemestre.setVisible(false);
-            
-        } else {
-            lblCurso.setVisible(true);
-            cbxCarrera.setVisible(true);
-            lblAddCurso.setVisible(true);
-            
-            lblSemestre.setVisible(true);
-            txtSemestre.setVisible(true);
-            
-        }
-        
-    }//GEN-LAST:event_cbxCategoriaActionPerformed
-
-
-    protected void jButton1ActionPerformed(ActionEvent evt) {}
-
-    protected void btnEliminarUsuarioActionPerformed(ActionEvent evt) {}
-
-    protected void txfSearchInputMethodTextChanged(InputMethodEvent evt) {}
-
-    protected void txfSearchActionPerformed(ActionEvent evt) {}
-
-    protected void btnCrearUsuarioActionPerformed(ActionEvent evt) {}
-
-    protected void btnEditarUsuarioActionPerformed(ActionEvent evt) {}
-
-    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {
-        
-        frameFormUsuarios.setVisible(false);
-        mostrarUsuarios();
-        limpiar();
-    }
-
-    private void formComponentShown(java.awt.event.ComponentEvent evt) {
-        
-        mostrarUsuarios();
-
-    }
-    
-    private void btnAceptarMouseClicked(java.awt.event.MouseEvent evt) {
-        
-        clickBtnAceptar();
-
-    }
-
-    private void frameFormUsuariosComponentShown(java.awt.event.ComponentEvent evt) {
-        // cargarCarreras();
-        // cargarCategorias();
-    }
-
-    private void btnLimpiarMouseClicked(java.awt.event.MouseEvent evt) {
-        
-        limpiar();
-    }
-
-    private void btnCrearUsuarioMouseClicked(java.awt.event.MouseEvent evt) {
-        
-        
-        cargarFormCrear();
-    }
-
-    private void btnEditarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {
-        
-        // String usuario = tblUsers.getModel().getValueAt(tblUsers.getSelectedRow(), 0).toString();
-        // JOptionPane.showMessageDialog(pnlUsuarioMain, usuario);
-        cargarFormModificar();
-    }
-
-    private void btnEliminarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {
-        
-        deleteUser();
-        mostrarUsuarios();
-    }
-
-    private void txfSearchKeyTyped(java.awt.event.KeyEvent evt) {
-        
-        ((AbstractDocument) txfSearch.getDocument()).setDocumentFilter(new Validaciones.filtroAlphaNumerico());
-        filtrarTabla();
-    }
-
-    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {
-        
-        ((AbstractDocument) txtCedula.getDocument()).setDocumentFilter(new Validaciones.filtroNumerico());
-    }
-
-    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {
-        
-        ((AbstractDocument) txtNombre.getDocument()).setDocumentFilter(new Validaciones.filtroLetras());
-    }
-
-    private void txtApellidoKeyTyped(java.awt.event.KeyEvent evt) {
-        
-        ((AbstractDocument) txtApellido.getDocument()).setDocumentFilter(new Validaciones.filtroLetras());
-    }
-
-    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {
-        
-        ((AbstractDocument) txtTelefono.getDocument()).setDocumentFilter(new Validaciones.filtroNumerico());
-    }
-
-    private void txtCorreoKeyTyped(java.awt.event.KeyEvent evt) {
-        
-        if (new Validaciones().validarCorreo(txtCorreo.getText())) {
-            lblInfoCorreo.setVisible(false);
-            btnAceptar.setVisible(true);
-        } else {
-            lblInfoCorreo.setVisible(true);
-            btnAceptar.setVisible(false);
-        }
-    }
-
-    private void txtSemestreKeyTyped(java.awt.event.KeyEvent evt) {
-        
-        ((AbstractDocument) txtSemestre.getDocument()).setDocumentFilter(new Validaciones.filtroNumerico());
-    }
-
-    private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {}
-
-    private void btnAceptarCursoMouseClicked(java.awt.event.MouseEvent evt) {
-        
-        int result = crearCarrera();
-        if(result > 0){
-            cargarCarreras();
-            txtCurso.setText("");
-            fromCreateCurso.setVisible(false);
-        }
-    }
-
-    private void btnLimpiarCursoMouseClicked(java.awt.event.MouseEvent evt) {
-        txtCurso.setText("");
-    }
-
-    private void btnEliminarCursoMouseClicked(java.awt.event.MouseEvent evt) {
-        
-        fromCreateCurso.setVisible(false);
-    }
-
-    private void txtCursoActionPerformed(java.awt.event.ActionEvent evt) {}
-
-    private void lblAddCursoMouseClicked(java.awt.event.MouseEvent evt) {
-        txtCurso.setText("");
-        fromCreateCurso.setVisible(true);
-    }
-
-    private void txtCursoKeyTyped(java.awt.event.KeyEvent evt) {
-        
-        ((AbstractDocument) txtCurso.getDocument()).setDocumentFilter(new Validaciones.filtroLetras());
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    protected javax.swing.JLabel btnAceptar;
-    protected javax.swing.JLabel btnAceptarCurso;
-    private javax.swing.JButton btnCrearUsuario;
-    private javax.swing.JButton btnEditarUsuario;
-    protected javax.swing.JLabel btnEliminar;
-    protected javax.swing.JLabel btnEliminarCurso;
-    private javax.swing.JButton btnEliminarUsuario;
-    protected javax.swing.JLabel btnLimpiar;
-    protected javax.swing.JLabel btnLimpiarCurso;
-    private javax.swing.JLabel btnSearch;
-    protected javax.swing.JComboBox<String> cbxCarrera;
-    protected javax.swing.JComboBox<String> cbxCategoria;
-    protected javax.swing.JFrame frameFormUsuarios;
-    private javax.swing.JFrame fromCreateCurso;
+    public javax.swing.JLabel btnAceptar;
+    public javax.swing.JLabel btnAceptarCurso;
+    public javax.swing.JButton btnCrearUsuario;
+    public javax.swing.JButton btnEditarUsuario;
+    public javax.swing.JLabel btnEliminar;
+    public javax.swing.JLabel btnEliminarCurso;
+    public javax.swing.JButton btnEliminarUsuario;
+    public javax.swing.JLabel btnLimpiar;
+    public javax.swing.JLabel btnLimpiarCurso;
+    public javax.swing.JLabel btnSearch;
+    public javax.swing.JComboBox<String> cbxCarrera;
+    public javax.swing.JComboBox<String> cbxCategoria;
+    public javax.swing.JFrame frameFormUsuarios;
+    public javax.swing.JFrame fromCreateCurso;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    protected javax.swing.JSeparator jSeparator1;
-    protected javax.swing.JSeparator jSeparator5;
-    protected javax.swing.JLabel lblAddCurso;
-    protected javax.swing.JLabel lblApellido;
-    protected javax.swing.JLabel lblCategoria;
-    protected javax.swing.JLabel lblCedula;
-    protected javax.swing.JLabel lblControl;
-    protected javax.swing.JLabel lblCorreo;
-    protected javax.swing.JLabel lblCurso;
-    protected javax.swing.JLabel lblEstado;
-    protected javax.swing.JLabel lblId;
-    protected javax.swing.JLabel lblInfoCorreo;
-    protected javax.swing.JLabel lblNombre;
-    protected javax.swing.JLabel lblSemestre;
-    protected javax.swing.JLabel lblTelefono;
-    protected javax.swing.JLabel lblTitle;
-    protected javax.swing.JLabel lblTitleCurso;
-    protected javax.swing.JPanel pnlFormUsuario;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JSeparator jSeparator1;
+    public javax.swing.JSeparator jSeparator5;
+    public javax.swing.JLabel lblAddCurso;
+    public javax.swing.JLabel lblApellido;
+    public javax.swing.JLabel lblCategoria;
+    public javax.swing.JLabel lblCedula;
+    public javax.swing.JLabel lblControl;
+    public javax.swing.JLabel lblCorreo;
+    public javax.swing.JLabel lblCurso;
+    public javax.swing.JLabel lblEstado;
+    public javax.swing.JLabel lblId;
+    public javax.swing.JLabel lblInfoCorreo;
+    public javax.swing.JLabel lblNombre;
+    public javax.swing.JLabel lblSemestre;
+    public javax.swing.JLabel lblTelefono;
+    public javax.swing.JLabel lblTitle;
+    public javax.swing.JLabel lblTitleCurso;
+    public javax.swing.JPanel pnlFormUsuario;
     private javax.swing.JPanel pnlTbUsuarios;
     protected javax.swing.JPanel pnlUsuarioHeader;
-    protected javax.swing.JPanel pnlUsuarioMain;
-    protected javax.swing.JTable tblUsers;
-    protected javax.swing.JTextField txfSearch;
-    protected javax.swing.JTextField txtApellido;
-    protected javax.swing.JTextField txtCedula;
-    protected javax.swing.JTextField txtCorreo;
-    protected javax.swing.JTextField txtCurso;
-    protected javax.swing.JTextField txtNombre;
-    protected javax.swing.JTextField txtSemestre;
-    protected javax.swing.JTextField txtTelefono;
+    public javax.swing.JPanel pnlUsuarioMain;
+    public javax.swing.JTable tblUsers;
+    public javax.swing.JTextField txfSearch;
+    public javax.swing.JTextField txtApellido;
+    public javax.swing.JTextField txtCedula;
+    public javax.swing.JTextField txtCorreo;
+    public javax.swing.JTextField txtCurso;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtSemestre;
+    public javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

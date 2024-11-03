@@ -4,6 +4,8 @@
  */
 package biblioteca.vista;
 
+import biblioteca.controlador.*;
+
 /**
  *
  * @author arnal
@@ -27,7 +29,7 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         dashboard = new VDashboard();
         prestamos = new VPrestamos();
         libros = new VLibros();
-        usuarios = new VUsuarios();
+        usuarios = new CUsuarios(new VUsuarios()).vista;
         sedes = new VSedes();
         reportes = new VReportes();
         
