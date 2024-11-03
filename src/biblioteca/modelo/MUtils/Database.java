@@ -25,11 +25,9 @@ public class Database {
         try {
             Class.forName(DRIVER);
             conexion = DriverManager.getConnection(URL, USER, PASSWORD);
-            
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch(SQLException e){
-            e.printStackTrace();
+            System.out.println("Conexión exitosa con la Base de Datos.");
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Falló la conexión con la Base de Datos. " + e.getMessage());
         }
     }
 

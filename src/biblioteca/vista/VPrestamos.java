@@ -6,7 +6,6 @@ package biblioteca.vista;
 
 import biblioteca.controlador.CUtils.Validaciones;
 import biblioteca.vista.VUtils.VFuncionesPrestamos;
-import biblioteca.controlador.*;
 import javax.swing.text.AbstractDocument;
 
 /**
@@ -542,6 +541,7 @@ public class VPrestamos extends javax.swing.JPanel {
         formCreatePrestamo.getAccessibleContext().setAccessibleParent(pnlMain);
 
         setMinimumSize(new java.awt.Dimension(684, 694));
+        setName("prestamos"); // NOI18N
         setPreferredSize(new java.awt.Dimension(684, 694));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
@@ -753,8 +753,8 @@ public class VPrestamos extends javax.swing.JPanel {
         ((AbstractDocument) txtSearchPrestamo.getDocument()).setDocumentFilter(new Validaciones.filtroAlphaNumerico());
         
         if (checkEstado.isSelected()){
-            new VFuncionesPrestamos().filtrarTabla(tblPrestamos,"EN CURSO", txtSearchPrestamo.getText() );
-        }else new VFuncionesPrestamos().filtrarTabla(tblPrestamos,txtSearchPrestamo.getText(),"");
+            new VFuncionesPrestamos().filtrarTabla(tblPrestamos,"EN CURSO", txtSearchPrestamo.getText(), new SistemaBibliotecas().cbxSedes.getSelectedItem().toString());
+        }else new VFuncionesPrestamos().filtrarTabla(tblPrestamos,txtSearchPrestamo.getText(),"", new SistemaBibliotecas().cbxSedes.getSelectedItem().toString());
         
     }
 
@@ -766,8 +766,8 @@ public class VPrestamos extends javax.swing.JPanel {
     private void checkEstadoItemStateChanged(java.awt.event.ItemEvent evt) {
         
         if (checkEstado.isSelected()){
-            new VFuncionesPrestamos().filtrarTabla(tblPrestamos,"EN CURSO", txtSearchPrestamo.getText() );
-        }else new VFuncionesPrestamos().filtrarTabla(tblPrestamos,txtSearchPrestamo.getText(),"");
+            new VFuncionesPrestamos().filtrarTabla(tblPrestamos,"EN CURSO", txtSearchPrestamo.getText(), new SistemaBibliotecas().cbxSedes.getSelectedItem().toString());
+        }else new VFuncionesPrestamos().filtrarTabla(tblPrestamos,txtSearchPrestamo.getText(),"", new SistemaBibliotecas().cbxSedes.getSelectedItem().toString());
     }
 
 

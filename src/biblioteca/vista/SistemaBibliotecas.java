@@ -4,21 +4,18 @@
  */
 package biblioteca.vista;
 
-import biblioteca.vista.*;
-import java.awt.Color;
-
 /**
  *
  * @author arnal
  */
 public class SistemaBibliotecas extends javax.swing.JFrame {
     
-    private VDashboard dashboard;
-    private VPrestamos prestamos;
-    private VLibros libros;
-    private VUsuarios usuarios;
-    private VSedes sedes;
-    private VReportes reportes;
+    public VDashboard dashboard;
+    public VPrestamos prestamos;
+    public VLibros libros;
+    public VUsuarios usuarios;
+    public VSedes sedes;
+    public VReportes reportes;
     
 
     /**
@@ -41,12 +38,7 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         pnlMain.add(usuarios);
         pnlMain.add(sedes);
         pnlMain.add(reportes);
-        
-        dashboard.setVisible(true);
-        btnMenuDashboard.setBackground(new java.awt.Color(0, 32, 96));
-        btnMenuDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconDashboard.png")));
-        btnMenuDashboard.setForeground(Color.WHITE);
-        
+                
     }
 
     /**
@@ -62,7 +54,7 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         pnlHeader = new javax.swing.JPanel();
         lblSede = new javax.swing.JLabel();
-        cbxSedeSelec = new javax.swing.JComboBox<>();
+        cbxSedes = new javax.swing.JComboBox<>();
         lblTitle = new javax.swing.JLabel();
         pnlMenu = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
@@ -107,11 +99,11 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         lblSede.setText("SEDE");
         pnlHeader.add(lblSede, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 30));
 
-        cbxSedeSelec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbxSedeSelec.setBorder(null);
-        cbxSedeSelec.setMinimumSize(new java.awt.Dimension(43, 22));
-        cbxSedeSelec.setPreferredSize(new java.awt.Dimension(43, 22));
-        pnlHeader.add(cbxSedeSelec, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 2, 210, 25));
+        cbxSedes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxSedes.setBorder(null);
+        cbxSedes.setMinimumSize(new java.awt.Dimension(43, 22));
+        cbxSedes.setPreferredSize(new java.awt.Dimension(43, 22));
+        pnlHeader.add(cbxSedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 2, 210, 25));
 
         lblTitle.setBackground(new java.awt.Color(0, 102, 102));
         lblTitle.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
@@ -126,14 +118,6 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconLogo.png"))); // NOI18N
-        lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblLogoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblLogoMouseExited(evt);
-            }
-        });
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jSeparator1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -145,17 +129,6 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         btnMenuDashboard.setToolTipText("");
         btnMenuDashboard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenuDashboard.setOpaque(true);
-        btnMenuDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMenuDashboardMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuDashboardMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuDashboardMouseExited(evt);
-            }
-        });
 
         btnMenuPrestamos.setBackground(new java.awt.Color(230, 255, 255));
         btnMenuPrestamos.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -163,17 +136,6 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         btnMenuPrestamos.setText("PRESTAMOS");
         btnMenuPrestamos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenuPrestamos.setOpaque(true);
-        btnMenuPrestamos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMenuPrestamosMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuPrestamosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuPrestamosMouseExited(evt);
-            }
-        });
 
         btnMenuUsuarios.setBackground(new java.awt.Color(230, 255, 255));
         btnMenuUsuarios.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -181,17 +143,6 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         btnMenuUsuarios.setText("USUARIOS");
         btnMenuUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenuUsuarios.setOpaque(true);
-        btnMenuUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMenuUsuariosMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuUsuariosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuUsuariosMouseExited(evt);
-            }
-        });
 
         btnMenuSalir.setBackground(new java.awt.Color(230, 255, 255));
         btnMenuSalir.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -199,17 +150,6 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         btnMenuSalir.setText("SALIR");
         btnMenuSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenuSalir.setOpaque(true);
-        btnMenuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMenuSalirMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuSalirMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuSalirMouseExited(evt);
-            }
-        });
 
         btnMenuSedes.setBackground(new java.awt.Color(230, 255, 255));
         btnMenuSedes.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -217,17 +157,6 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         btnMenuSedes.setText("SEDES");
         btnMenuSedes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenuSedes.setOpaque(true);
-        btnMenuSedes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMenuSedesMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuSedesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuSedesMouseExited(evt);
-            }
-        });
 
         btnMenuLibros.setBackground(new java.awt.Color(230, 255, 255));
         btnMenuLibros.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -235,17 +164,6 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         btnMenuLibros.setText("LIBROS");
         btnMenuLibros.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenuLibros.setOpaque(true);
-        btnMenuLibros.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMenuLibrosMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuLibrosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuLibrosMouseExited(evt);
-            }
-        });
 
         btnMenuReportes.setBackground(new java.awt.Color(230, 255, 255));
         btnMenuReportes.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -253,17 +171,6 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         btnMenuReportes.setText("REPORTES");
         btnMenuReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenuReportes.setOpaque(true);
-        btnMenuReportes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMenuReportesMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMenuReportesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMenuReportesMouseExited(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
         pnlMenu.setLayout(pnlMenuLayout);
@@ -334,412 +241,24 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMenuSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuSalirMouseEntered
-        // TODO add your handling code here:
-        btnMenuSalir.setBackground(new java.awt.Color(217, 39, 46));
-        btnMenuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconExit.png")));
-        btnMenuSalir.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnMenuSalirMouseEntered
-
-    private void btnMenuDashboardMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuDashboardMouseEntered
-        // TODO add your handling code here:
-        btnMenuDashboard.setBackground(new java.awt.Color(46, 144, 232));
-        btnMenuDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconDashboard.png")));
-        btnMenuDashboard.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnMenuDashboardMouseEntered
-
-    private void btnMenuPrestamosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuPrestamosMouseEntered
-        // TODO add your handling code here:
-        btnMenuPrestamos.setBackground(new java.awt.Color(46, 144, 232));
-        btnMenuPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconTime.png")));
-        btnMenuPrestamos.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnMenuPrestamosMouseEntered
-
-    private void btnMenuUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuUsuariosMouseEntered
-        // TODO add your handling code here:
-        btnMenuUsuarios.setBackground(new java.awt.Color(46, 144, 232));
-        btnMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconUsers.png")));
-        btnMenuUsuarios.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnMenuUsuariosMouseEntered
-
-    private void btnMenuSedesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuSedesMouseEntered
-        // TODO add your handling code here:
-        btnMenuSedes.setBackground(new java.awt.Color(46, 144, 232));
-        btnMenuSedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconPlace.png")));
-        btnMenuSedes.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnMenuSedesMouseEntered
-
-    private void btnMenuSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuSalirMouseClicked
-        // TODO add your handling code here:
-        btnMenuSalir.setBackground(new java.awt.Color(217, 39, 46));
-        btnMenuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconExit.png")));
-        btnMenuSalir.setForeground(Color.WHITE);
-        System.exit(0);
-    }//GEN-LAST:event_btnMenuSalirMouseClicked
-
-    private void btnMenuLibrosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuLibrosMouseEntered
-        // TODO add your handling code here:
-        btnMenuLibros.setBackground(new java.awt.Color(46, 144, 232));
-        btnMenuLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconBooks.png")));
-        btnMenuLibros.setForeground(Color.WHITE);
-        
-    }//GEN-LAST:event_btnMenuLibrosMouseEntered
-
-    private void btnMenuDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuDashboardMouseClicked
-        // TODO add your handling code here:
-        dashboard.setVisible(true);
-        btnMenuDashboard.setBackground(new java.awt.Color(0, 32, 96));
-        btnMenuDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconDashboard.png")));
-        btnMenuDashboard.setForeground(Color.WHITE);
-        
-        prestamos.setVisible(false);
-        btnMenuPrestamos.setBackground(new java.awt.Color(230,255,255));
-        btnMenuPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconTime.png")));
-        btnMenuPrestamos.setForeground(Color.BLACK);
-        
-        libros.setVisible(false);
-        btnMenuLibros.setBackground(new java.awt.Color(230,255,255));
-        btnMenuLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconBooks.png")));
-        btnMenuLibros.setForeground(Color.BLACK);
-        
-        usuarios.setVisible(false);
-        btnMenuUsuarios.setBackground(new java.awt.Color(230,255,255));
-        btnMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconUsers.png")));
-        btnMenuUsuarios.setForeground(Color.BLACK);
-        
-        sedes.setVisible(false);
-        btnMenuSedes.setBackground(new java.awt.Color(230,255,255));
-        btnMenuSedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconPlace.png")));
-        btnMenuSedes.setForeground(Color.BLACK);
-        
-        reportes.setVisible(false);
-        btnMenuReportes.setBackground(new java.awt.Color(230,255,255));
-        btnMenuReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAnalytics.png")));
-        btnMenuReportes.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnMenuDashboardMouseClicked
-
-    private void btnMenuPrestamosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuPrestamosMouseClicked
-        // TODO add your handling code here:
-        dashboard.setVisible(false);
-        btnMenuDashboard.setBackground(new java.awt.Color(230,255,255));
-        btnMenuDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconDashboard.png")));
-        btnMenuDashboard.setForeground(Color.BLACK);
-        
-        prestamos.setVisible(true);
-        btnMenuPrestamos.setBackground(new java.awt.Color(0, 32, 96));
-        btnMenuPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconTime.png")));
-        btnMenuPrestamos.setForeground(Color.WHITE);
-        
-        libros.setVisible(false);
-        btnMenuLibros.setBackground(new java.awt.Color(230,255,255));
-        btnMenuLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconBooks.png")));
-        btnMenuLibros.setForeground(Color.BLACK);
-        
-        usuarios.setVisible(false);
-        btnMenuUsuarios.setBackground(new java.awt.Color(230,255,255));
-        btnMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconUsers.png")));
-        btnMenuUsuarios.setForeground(Color.BLACK);
-        
-        sedes.setVisible(false);
-        btnMenuSedes.setBackground(new java.awt.Color(230,255,255));
-        btnMenuSedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconPlace.png")));
-        btnMenuSedes.setForeground(Color.BLACK);
-        
-        reportes.setVisible(false);
-        btnMenuReportes.setBackground(new java.awt.Color(230,255,255));
-        btnMenuReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAnalytics.png")));
-        btnMenuReportes.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnMenuPrestamosMouseClicked
-
-    private void btnMenuLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuLibrosMouseClicked
-        // TODO add your handling code here:
-        dashboard.setVisible(false);
-        btnMenuDashboard.setBackground(new java.awt.Color(230,255,255));
-        btnMenuDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconDashboard.png")));
-        btnMenuDashboard.setForeground(Color.BLACK);
-        
-        prestamos.setVisible(false);
-        btnMenuPrestamos.setBackground(new java.awt.Color(230,255,255));
-        btnMenuPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconTime.png")));
-        btnMenuPrestamos.setForeground(Color.BLACK);
-        
-        libros.setVisible(true);
-        btnMenuLibros.setBackground(new java.awt.Color(0, 32, 96));
-        btnMenuLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconBooks.png")));
-        btnMenuLibros.setForeground(Color.WHITE);
-        
-        usuarios.setVisible(false);
-        btnMenuUsuarios.setBackground(new java.awt.Color(230,255,255));
-        btnMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconUsers.png")));
-        btnMenuUsuarios.setForeground(Color.BLACK);
-        
-        sedes.setVisible(false);
-        btnMenuSedes.setBackground(new java.awt.Color(230,255,255));
-        btnMenuSedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconPlace.png")));
-        btnMenuSedes.setForeground(Color.BLACK);
-        
-        reportes.setVisible(false);
-        btnMenuReportes.setBackground(new java.awt.Color(230,255,255));
-        btnMenuReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAnalytics.png")));
-        btnMenuReportes.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnMenuLibrosMouseClicked
-
-    private void btnMenuUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuUsuariosMouseClicked
-        // TODO add your handling code here:
-
-        // usuarios.obtenerDatos();
-
-        dashboard.setVisible(false);
-        btnMenuDashboard.setBackground(new java.awt.Color(230,255,255));
-        btnMenuDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconDashboard.png")));
-        btnMenuDashboard.setForeground(Color.BLACK);
-        
-        prestamos.setVisible(false);
-        btnMenuPrestamos.setBackground(new java.awt.Color(230,255,255));
-        btnMenuPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconTime.png")));
-        btnMenuPrestamos.setForeground(Color.BLACK);
-        
-        libros.setVisible(false);
-        btnMenuLibros.setBackground(new java.awt.Color(230,255,255));
-        btnMenuLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconBooks.png")));
-        btnMenuLibros.setForeground(Color.BLACK);
-        
-        usuarios.setVisible(true);
-        btnMenuUsuarios.setBackground(new java.awt.Color(0, 32, 96));
-        btnMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconUsers.png")));
-        btnMenuUsuarios.setForeground(Color.WHITE);
-        
-        sedes.setVisible(false);
-        btnMenuSedes.setBackground(new java.awt.Color(230,255,255));
-        btnMenuSedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconPlace.png")));
-        btnMenuSedes.setForeground(Color.BLACK);
-        
-        reportes.setVisible(false);
-        btnMenuReportes.setBackground(new java.awt.Color(230,255,255));
-        btnMenuReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAnalytics.png")));
-        btnMenuReportes.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnMenuUsuariosMouseClicked
-
-    private void btnMenuSedesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuSedesMouseClicked
-        // TODO add your handling code here:
-        dashboard.setVisible(false);
-        btnMenuDashboard.setBackground(new java.awt.Color(230,255,255));
-        btnMenuDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconDashboard.png")));
-        btnMenuDashboard.setForeground(Color.BLACK);
-        
-        prestamos.setVisible(false);
-        btnMenuPrestamos.setBackground(new java.awt.Color(230,255,255));
-        btnMenuPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconTime.png")));
-        btnMenuPrestamos.setForeground(Color.BLACK);
-        
-        libros.setVisible(false);
-        btnMenuLibros.setBackground(new java.awt.Color(230,255,255));
-        btnMenuLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconBooks.png")));
-        btnMenuLibros.setForeground(Color.BLACK);
-        
-        usuarios.setVisible(false);
-        btnMenuUsuarios.setBackground(new java.awt.Color(230,255,255));
-        btnMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconUsers.png")));
-        btnMenuUsuarios.setForeground(Color.BLACK);
-        
-        sedes.setVisible(true);
-        btnMenuSedes.setBackground(new java.awt.Color(0, 32, 96));
-        btnMenuSedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconPlace.png")));
-        btnMenuSedes.setForeground(Color.WHITE);
-        
-        reportes.setVisible(false);
-        btnMenuReportes.setBackground(new java.awt.Color(230,255,255));
-        btnMenuReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAnalytics.png")));
-        btnMenuReportes.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnMenuSedesMouseClicked
-
-    private void btnMenuSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuSalirMouseExited
-        // TODO add your handling code here:
-        btnMenuSalir.setBackground(new java.awt.Color(230,255,255));
-        btnMenuSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconExit.png")));
-        btnMenuSalir.setForeground(Color.BLACK);
-    }//GEN-LAST:event_btnMenuSalirMouseExited
-
-    private void btnMenuDashboardMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuDashboardMouseExited
-        // TODO add your handling code here:
-        if(!dashboard.isShowing()){
-            btnMenuDashboard.setBackground(new java.awt.Color(230,255,255));
-            btnMenuDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconDashboard.png")));
-            btnMenuDashboard.setForeground(Color.BLACK);
-        } 
-        else {
-            btnMenuDashboard.setBackground(new java.awt.Color(0, 32, 96));
-            btnMenuDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconDashboard.png")));
-            btnMenuDashboard.setForeground(Color.WHITE);
-        }
-    }//GEN-LAST:event_btnMenuDashboardMouseExited
-
-    private void btnMenuPrestamosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuPrestamosMouseExited
-        // TODO add your handling code here:
-        if(!prestamos.isShowing()){
-            btnMenuPrestamos.setBackground(new java.awt.Color(230,255,255));
-            btnMenuPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconTime.png")));
-            btnMenuPrestamos.setForeground(Color.BLACK);
-        } 
-        else {
-            btnMenuPrestamos.setBackground(new java.awt.Color(0, 32, 96));
-            btnMenuPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconTime.png")));
-            btnMenuPrestamos.setForeground(Color.WHITE);
-        }
-    }//GEN-LAST:event_btnMenuPrestamosMouseExited
-
-    private void btnMenuLibrosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuLibrosMouseExited
-        // TODO add your handling code here:
-        if(!libros.isShowing()){
-            btnMenuLibros.setBackground(new java.awt.Color(230,255,255));
-            btnMenuLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconBooks.png")));
-            btnMenuLibros.setForeground(Color.BLACK);
-        } 
-        else {
-            btnMenuLibros.setBackground(new java.awt.Color(0, 32, 96));
-            btnMenuLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconBooks.png")));
-            btnMenuLibros.setForeground(Color.WHITE);
-        }
-    }//GEN-LAST:event_btnMenuLibrosMouseExited
-
-    private void btnMenuUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuUsuariosMouseExited
-        // TODO add your handling code here:
-        if(!usuarios.isShowing()){
-            btnMenuUsuarios.setBackground(new java.awt.Color(230,255,255));
-            btnMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconUsers.png")));
-            btnMenuUsuarios.setForeground(Color.BLACK);
-        } 
-        else {
-            btnMenuUsuarios.setBackground(new java.awt.Color(0, 32, 96));
-            btnMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconUsers.png")));
-            btnMenuUsuarios.setForeground(Color.WHITE);
-        }
-    }//GEN-LAST:event_btnMenuUsuariosMouseExited
-
-    private void btnMenuSedesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuSedesMouseExited
-        // TODO add your handling code here:
-        if(!sedes.isShowing()){
-            btnMenuSedes.setBackground(new java.awt.Color(230,255,255));
-            btnMenuSedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconPlace.png")));
-            btnMenuSedes.setForeground(Color.BLACK);
-        } 
-        else {
-            btnMenuSedes.setBackground(new java.awt.Color(0, 32, 96));
-            btnMenuSedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconPlace.png")));
-            btnMenuSedes.setForeground(Color.WHITE);
-        }
-    }//GEN-LAST:event_btnMenuSedesMouseExited
-
-    private void lblLogoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoMouseEntered
-        // TODO add your handling code here:
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconLogoHover.png")));
-    }//GEN-LAST:event_lblLogoMouseEntered
-
-    private void lblLogoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoMouseExited
-        // TODO add your handling code here:
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconLogo.png")));
-    }//GEN-LAST:event_lblLogoMouseExited
-
-    private void btnMenuReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuReportesMouseClicked
-        // TODO add your handling code here:
-        dashboard.setVisible(false);
-        btnMenuDashboard.setBackground(new java.awt.Color(230,255,255));
-        btnMenuDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconDashboard.png")));
-        btnMenuDashboard.setForeground(Color.BLACK);
-        
-        prestamos.setVisible(false);
-        btnMenuPrestamos.setBackground(new java.awt.Color(230,255,255));
-        btnMenuPrestamos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconTime.png")));
-        btnMenuPrestamos.setForeground(Color.BLACK);
-        
-        libros.setVisible(false);
-        btnMenuLibros.setBackground(new java.awt.Color(230,255,255));
-        btnMenuLibros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconBooks.png")));
-        btnMenuLibros.setForeground(Color.BLACK);
-        
-        usuarios.setVisible(false);
-        btnMenuUsuarios.setBackground(new java.awt.Color(230,255,255));
-        btnMenuUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconUsers.png")));
-        btnMenuUsuarios.setForeground(Color.BLACK);
-        
-        sedes.setVisible(false);
-        btnMenuSedes.setBackground(new java.awt.Color(230,255,255));
-        btnMenuSedes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconPlace.png")));
-        btnMenuSedes.setForeground(Color.BLACK);
-        
-        reportes.setVisible(true);
-        btnMenuReportes.setBackground(new java.awt.Color(0, 32, 96));
-        btnMenuReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconAnalytics.png")));
-        btnMenuReportes.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnMenuReportesMouseClicked
-
-    private void btnMenuReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuReportesMouseEntered
-        // TODO add your handling code here:
-        btnMenuReportes.setBackground(new java.awt.Color(46, 144, 232));
-        btnMenuReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconAnalytics.png")));
-        btnMenuReportes.setForeground(Color.WHITE);
-    }//GEN-LAST:event_btnMenuReportesMouseEntered
-
-    private void btnMenuReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuReportesMouseExited
-        // TODO add your handling code here:
-        if(!reportes.isShowing()){
-            btnMenuReportes.setBackground(new java.awt.Color(230,255,255));
-            btnMenuReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconAnalytics.png")));
-            btnMenuReportes.setForeground(Color.BLACK);
-        } 
-        else {
-            btnMenuReportes.setBackground(new java.awt.Color(0, 32, 96));
-            btnMenuReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ligth/iconAnalytics.png")));
-            btnMenuReportes.setForeground(Color.WHITE);
-        }
-    }//GEN-LAST:event_btnMenuReportesMouseExited
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SistemaBibliotecas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SistemaBibliotecas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SistemaBibliotecas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SistemaBibliotecas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnMenuDashboard;
-    private javax.swing.JLabel btnMenuLibros;
-    private javax.swing.JLabel btnMenuPrestamos;
-    private javax.swing.JLabel btnMenuReportes;
-    private javax.swing.JLabel btnMenuSalir;
-    private javax.swing.JLabel btnMenuSedes;
-    private javax.swing.JLabel btnMenuUsuarios;
-    public javax.swing.JComboBox<String> cbxSedeSelec;
-    private javax.swing.JDesktopPane desktopPane;
+    public javax.swing.JLabel btnMenuDashboard;
+    public javax.swing.JLabel btnMenuLibros;
+    public javax.swing.JLabel btnMenuPrestamos;
+    public javax.swing.JLabel btnMenuReportes;
+    public javax.swing.JLabel btnMenuSalir;
+    public javax.swing.JLabel btnMenuSedes;
+    public javax.swing.JLabel btnMenuUsuarios;
+    public javax.swing.JComboBox<String> cbxSedes;
+    public javax.swing.JDesktopPane desktopPane;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lblLogo;
+    public javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblSede;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlHeader;
-    private javax.swing.JPanel pnlMain;
+    public javax.swing.JPanel pnlMain;
     private javax.swing.JPanel pnlMenu;
     // End of variables declaration//GEN-END:variables
 

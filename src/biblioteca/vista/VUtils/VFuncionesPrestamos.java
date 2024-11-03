@@ -36,18 +36,7 @@ public class VFuncionesPrestamos {
         modeloColumnas.removeColumn(modeloColumnas.getColumn(0));
     }
 
-    /*
-    public void filtrarTabla(JTable tabla, String busqueda) {
-        // Crear el TableRowSorter y asignarlo al JTable
-        TableRowSorter<TableModel> filtro = new TableRowSorter<>(tabla.getModel());
-        tabla.setRowSorter(filtro);
-        
-        if (busqueda.trim().length() == 0) { filtro.setRowFilter(null); }
-        else { filtro.setRowFilter(RowFilter.regexFilter("(?i)" + busqueda)); }
-    }
-    */
-
-    public void filtrarTabla(JTable tabla, String busqueda1, String busqueda2) {
+    public void filtrarTabla(JTable tabla, String busqueda1, String busqueda2, String sede) {
         // Creamos el TableRowSorter y asiganamos a la tabla
         TableRowSorter<TableModel> filtro = new TableRowSorter<>(tabla.getModel());
         tabla.setRowSorter(filtro);
@@ -60,6 +49,9 @@ public class VFuncionesPrestamos {
 
         // Agregamos el segundo filtro
         if (busqueda2.trim().length() > 0) { filtros.add(RowFilter.regexFilter("(?i)" + busqueda2)); }
+        
+        // Agregamos el segundo filtro
+        if (!sede.equals("TODAS")) { filtros.add(RowFilter.regexFilter("(?i)" + sede)); }
 
         // Combinamos los filtros y los asignamos.
         RowFilter<Object, Object> filtroCompuesto = RowFilter.andFilter(filtros);

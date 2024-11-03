@@ -4,8 +4,8 @@
  */
 package biblioteca.controlador;
 
-import biblioteca.modelo.DAO.DAOUsuarios;
 import biblioteca.modelo.*;
+import biblioteca.modelo.DAO.DAOUsuarios;
 import java.util.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -103,6 +103,9 @@ public class CUsuarios {
     public int elimiarUsuario(String idUsuario){
         return new DAOUsuarios().eliminar(Integer.parseInt(idUsuario));
     }
+
+    
+
 
     
 }

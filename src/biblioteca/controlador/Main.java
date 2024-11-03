@@ -4,8 +4,6 @@
  */
 package biblioteca.controlador;
 
-import biblioteca.vista.SistemaBibliotecas;
-
 /**
  *
  * @author arnal
@@ -15,12 +13,15 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         // TODO code application logic here
         
                 /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new SistemaBibliotecas().setVisible(true);
+
+            CSistemaBibliotecas menu = new CSistemaBibliotecas();
+            menu.vista.setVisible(true);
         });
     }
     

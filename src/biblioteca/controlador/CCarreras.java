@@ -4,8 +4,9 @@
  */
 package biblioteca.controlador;
 
-import biblioteca.modelo.DAO.DAOCarrera;
 import biblioteca.modelo.*;
+import biblioteca.modelo.DAO.DAOCarrera;
+import biblioteca.modelo.DAO.DAOSedes;
 import java.util.*;
 import javax.swing.DefaultComboBoxModel;
 
@@ -43,6 +44,19 @@ public class CCarreras {
         return new DAOCarrera().insertarCarrera(carr.getCarrera());
     }
 
+    public DefaultComboBoxModel getSedes(){
+
+        List<MBibliotecas> bibliotecas = new DAOSedes().readSedes();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        modelo.addElement("TODAS");
+        for (MBibliotecas biblio : bibliotecas) {
+            modelo.addElement(biblio.getDescripcion().toUpperCase());
+        }
+
+        return modelo;
+    }
 
     
 }

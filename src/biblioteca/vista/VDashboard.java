@@ -43,6 +43,7 @@ public class VDashboard extends javax.swing.JPanel {
         );
 
         setMinimumSize(new java.awt.Dimension(684, 694));
+        setName("dasboard"); // NOI18N
         setPreferredSize(new java.awt.Dimension(684, 694));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

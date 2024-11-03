@@ -21,7 +21,7 @@ public class CPrestamos {
         List<MVistaPrestamos> prestamos = new DAOPrestamos().obtenerVistaPrestamos();
 
         DefaultTableModel modelo = new DefaultTableModel();
-        String[] columnas = {"ID PRESTAMO","FECHA ESTIMADA", "ID LIBRO", "CODIGO", "LIBRO", "CEDULA", "USUARIO", "CATEGORIA", "ESTADO"};
+        String[] columnas = {"ID PRESTAMO","FECHA ESTIMADA", "ID LIBRO", "CODIGO", "LIBRO", "CEDULA", "USUARIO", "BIBLIOTECA", "ESTADO"};
         modelo.setColumnIdentifiers(columnas);
 
         for (MVistaPrestamos prest : prestamos) {
