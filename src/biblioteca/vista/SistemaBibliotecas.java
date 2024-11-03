@@ -13,6 +13,7 @@ import biblioteca.controlador.*;
 public class SistemaBibliotecas extends javax.swing.JFrame {
     
     public VDashboard dashboard;
+    public CPrestamos controladorPrestamos;
     public VPrestamos prestamos;
     public VLibros libros;
     public VUsuarios usuarios;
@@ -27,7 +28,8 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         initComponents();
         
         dashboard = new VDashboard();
-        prestamos = new VPrestamos();
+        controladorPrestamos = new CPrestamos(new VPrestamos());
+        prestamos = controladorPrestamos.vista;
         libros = new VLibros();
         usuarios = new CUsuarios(new VUsuarios()).vista;
         sedes = new VSedes();

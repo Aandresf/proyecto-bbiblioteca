@@ -4,6 +4,7 @@
  */
 package biblioteca.controlador;
 
+import biblioteca.modelo.ModelViewsTables.MVistaUsuarios;
 import biblioteca.controlador.CUtils.Validaciones;
 import biblioteca.modelo.*;
 import biblioteca.modelo.DAO.DAOUsuarios;

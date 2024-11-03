@@ -5,8 +5,8 @@
 package biblioteca.modelo.DAO;
 
 import biblioteca.modelo.MUtils.Database;
-import biblioteca.modelo.MVistaLibros;
-import biblioteca.modelo.MVistaPrestamos;
+import biblioteca.modelo.ModelViewsTables.MVistaLibros;
+import biblioteca.modelo.ModelViewsTables.MVistaPrestamos;
 import java.util.*;
 
 /**

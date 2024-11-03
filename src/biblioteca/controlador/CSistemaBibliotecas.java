@@ -15,15 +15,29 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("unchecked")
 public class CSistemaBibliotecas {
-    
     public SistemaBibliotecas vista = new SistemaBibliotecas();
+    
 
+    
+    
     public CSistemaBibliotecas() {
-
+        
         vista.cbxSedes.setModel(new CCarreras().getSedes());
 
         actions();
         btnSelected(vista.dashboard, vista.btnMenuDashboard, "/img/ligth/iconDashboard.png");
+    }
+
+    public void filterSede(){
+        String sedeSeleccionada = vista.cbxSedes.getSelectedItem().toString();
+
+        if(vista.prestamos.isShowing()){
+
+            vista.controladorPrestamos.sede = sedeSeleccionada;
+            vista.controladorPrestamos.filterStatePrestamo();
+
+        }
+
     }
 
     private void btnExited(JPanel panel, JLabel btn, String ico, String icoSelected){
@@ -69,6 +83,12 @@ public class CSistemaBibliotecas {
 
 
     private void actions(){
+
+        vista.cbxSedes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filterSede();
+            }
+        });
 
         vista.lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
             

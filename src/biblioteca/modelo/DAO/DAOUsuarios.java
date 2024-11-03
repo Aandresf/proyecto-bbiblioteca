@@ -3,7 +3,7 @@ package biblioteca.modelo.DAO;
 
 import biblioteca.modelo.MUtils.Database;
 import biblioteca.modelo.MUsuarios;
-import biblioteca.modelo.MVistaUsuarios;
+import biblioteca.modelo.ModelViewsTables.MVistaUsuarios;
 import java.util.*;
 
 public class DAOUsuarios {
