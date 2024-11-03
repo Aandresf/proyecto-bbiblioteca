@@ -71,9 +71,11 @@ public class CSistemaBibliotecas {
     private void actions(){
 
         vista.lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
+            
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 vista.lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconLogoHover.png")));
             }
+            
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 vista.lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconLogo.png")));
             }

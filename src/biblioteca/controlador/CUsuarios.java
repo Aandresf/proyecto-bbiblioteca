@@ -8,6 +8,7 @@ import biblioteca.controlador.CUtils.Validaciones;
 import biblioteca.modelo.*;
 import biblioteca.modelo.DAO.DAOUsuarios;
 import biblioteca.vista.VUsuarios;
+
 import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -25,6 +26,8 @@ public final class CUsuarios {
 
     public VUsuarios vista;
 
+    public CUsuarios() {}
+
     public CUsuarios(VUsuarios vista) {
 
         this.vista = vista;
@@ -33,23 +36,12 @@ public final class CUsuarios {
         actions();
     }
 
-    public CUsuarios() {
-    }
 
-    private void deleteUser() {
-
-        if (vista.tblUsers.getSelectedRow() != -1) {
-            String usuario = vista.tblUsers.getModel().getValueAt(vista.tblUsers.getSelectedRow(), 0).toString();
-            JOptionPane.showMessageDialog(vista.pnlUsuarioMain, elimiarUsuario(usuario) + "usuario eliminado");
-        } else {
-            JOptionPane.showMessageDialog(vista.pnlUsuarioMain, "Selecciones un usuario a eliminar");
-        }
-    }
-
+    
     private int ingresarSemestre() {
-
+        
         int semestre = 0;
-
+        
         if (!vista.txtSemestre.getText().isEmpty()) {
             semestre = Integer.parseInt(vista.txtSemestre.getText());
         }
@@ -63,10 +55,10 @@ public final class CUsuarios {
         vista.txtTelefono.setText("");
         vista.txtCorreo.setText("");
         vista.txtSemestre.setText("");
-
+        
         vista.cbxCarrera.setSelectedIndex(0);
         vista.cbxCategoria.setSelectedIndex(0);
-
+        
         vista.lblId.setText("");
 
     }
@@ -108,7 +100,7 @@ public final class CUsuarios {
                         vista.cbxCarrera.getSelectedIndex() + 1,
                         ingresarSemestre(),
                         Integer.parseInt(vista.lblEstado.getText())
-                )
+                        )
         );
     }
 
@@ -180,7 +172,7 @@ public final class CUsuarios {
 
     public void clickBtnAceptar() {
         int control = Integer.parseInt(vista.lblControl.getText());
-
+        
         if (control == 1) {
             if (!vista.txtCedula.getText().isBlank() && !vista.txtNombre.getText().isBlank() && !vista.txtApellido.getText().isBlank()) {
                 JOptionPane.showMessageDialog(vista.pnlFormUsuario, "Usuarios registrados: " + crearUsuario());
@@ -220,6 +212,111 @@ public final class CUsuarios {
         }
     }
 
+    public MUsuarios obtenerUsuario(int id) {
+        return new DAOUsuarios().obtenerUsuario(id);
+    }
+    
+    public MVistaUsuarios obtenerUsuarioCampo(String campo, String valor) {
+        return new DAOUsuarios().obtenerUsuarioCampo(campo, valor);
+    }
+
+    public void mostrarUsuarios() {
+
+        List<MUsuarios> usuarios = new DAOUsuarios().obtenerUsuarios();
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        String[] columnas = {"ID", "CATEGORIA", "CEDULA", "NOMBRE", "APELLIDO", "TELEFONO", "CORREO", "CARRERA", "SEMESTRE", "ESTADO"};
+        modelo.setColumnIdentifiers(columnas);
+
+        for (MUsuarios user : usuarios) {
+            String[] renglon = {String.valueOf(user.getId()),
+                String.valueOf(user.getCategoria()),
+                String.valueOf(user.getCedula()),
+                user.getNombre(),
+                user.getApellido(),
+                user.getTelefono(),
+                user.getCorreo(),
+                String.valueOf(user.getCarrera()),
+                String.valueOf(user.getSemestre()),
+                String.valueOf(user.getEstado())};
+
+            modelo.addRow(renglon);
+        }
+
+        vista.tblUsers.setModel(modelo);
+        TableColumnModel modeloColumnas = vista.tblUsers.getColumnModel();
+        modeloColumnas.removeColumn(modeloColumnas.getColumn(0));
+
+    }
+    
+    public void mostarVistaUsuarios() {
+
+        List<MVistaUsuarios> usuarios = new DAOUsuarios().obtenerVistaUsuarios();
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        String[] columnas = {"ID", "CEDULA", "NOMBRE", "CATEGORIA", /*"ID CATEGORIA",*/ "CARRERA", "ULTIMO PRESTAMO"};
+        modelo.setColumnIdentifiers(columnas);
+
+        for (MVistaUsuarios user : usuarios) {
+            String[] renglon = {
+                String.valueOf(user.getId()),
+                String.valueOf(user.getCedula()),
+                user.getNombre(),
+                user.getCategoria(),
+                //String.valueOf(user.getIdCategoria()),
+                user.getCarrera(),
+                user.getUltimoPrestamo()
+            };
+
+            modelo.addRow(renglon);
+        }
+
+        vista.tblUsers.setModel(modelo);
+        TableColumnModel modeloColumnas = vista.tblUsers.getColumnModel();
+        modeloColumnas.removeColumn(modeloColumnas.getColumn(0));
+    }
+    
+    public int crearUsuario(MUsuarios user) {
+
+        return new DAOUsuarios().insertarUsuarios(user.getCategoria(),
+                user.getCedula(),
+                user.getNombre(),
+                user.getApellido(),
+                user.getTelefono(),
+                user.getCorreo(),
+                user.getCarrera(),
+                user.getSemestre(),
+                user.getEstado());
+            }
+
+    public int updateUser(MUsuarios user) {
+        return new DAOUsuarios().actualizarUsuario(
+                user.getId(),
+                user.getCedula(),
+                user.getNombre(),
+                user.getApellido(),
+                user.getTelefono(),
+                user.getCorreo(),
+                user.getCarrera(),
+                user.getSemestre(),
+                user.getEstado(),
+                user.getCategoria());
+    }
+
+    public int elimiarUsuario(String idUsuario) {
+        return new DAOUsuarios().eliminar(Integer.parseInt(idUsuario));
+    }
+
+    private void deleteUser() {
+    
+        if (vista.tblUsers.getSelectedRow() != -1) {
+            String usuario = vista.tblUsers.getModel().getValueAt(vista.tblUsers.getSelectedRow(), 0).toString();
+            JOptionPane.showMessageDialog(vista.pnlUsuarioMain, elimiarUsuario(usuario) + "usuario eliminado");
+        } else {
+            JOptionPane.showMessageDialog(vista.pnlUsuarioMain, "Selecciones un usuario a eliminar");
+        }
+    }
+
     public void actions() {
 
         vista.cbxCategoria.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +324,7 @@ public final class CUsuarios {
                 showInputCategoria();
             }
         });
-
+        
         vista.fromCreateCurso.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 mostarVistaUsuarios();
@@ -265,7 +362,7 @@ public final class CUsuarios {
                 cargarFormModificar();
             }
         });
-
+        
         vista.btnEliminarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteUser();
@@ -358,101 +455,6 @@ public final class CUsuarios {
             }
         });
 
-    }
-
-    public void mostrarUsuarios() {
-
-        List<MUsuarios> usuarios = new DAOUsuarios().obtenerUsuarios();
-
-        DefaultTableModel modelo = new DefaultTableModel();
-        String[] columnas = {"ID", "CATEGORIA", "CEDULA", "NOMBRE", "APELLIDO", "TELEFONO", "CORREO", "CARRERA", "SEMESTRE", "ESTADO"};
-        modelo.setColumnIdentifiers(columnas);
-
-        for (MUsuarios user : usuarios) {
-            String[] renglon = {String.valueOf(user.getId()),
-                String.valueOf(user.getCategoria()),
-                String.valueOf(user.getCedula()),
-                user.getNombre(),
-                user.getApellido(),
-                user.getTelefono(),
-                user.getCorreo(),
-                String.valueOf(user.getCarrera()),
-                String.valueOf(user.getSemestre()),
-                String.valueOf(user.getEstado())};
-
-            modelo.addRow(renglon);
-        }
-
-        vista.tblUsers.setModel(modelo);
-        TableColumnModel modeloColumnas = vista.tblUsers.getColumnModel();
-        modeloColumnas.removeColumn(modeloColumnas.getColumn(0));
-
-    }
-
-    public MUsuarios obtenerUsuario(int id) {
-        return new DAOUsuarios().obtenerUsuario(id);
-    }
-
-    public MVistaUsuarios obtenerUsuarioCampo(String campo, String valor) {
-        return new DAOUsuarios().obtenerUsuarioCampo(campo, valor);
-    }
-
-    public void mostarVistaUsuarios() {
-
-        List<MVistaUsuarios> usuarios = new DAOUsuarios().obtenerVistaUsuarios();
-
-        DefaultTableModel modelo = new DefaultTableModel();
-        String[] columnas = {"ID", "CEDULA", "NOMBRE", "CATEGORIA", /*"ID CATEGORIA",*/ "CARRERA", "ULTIMO PRESTAMO"};
-        modelo.setColumnIdentifiers(columnas);
-
-        for (MVistaUsuarios user : usuarios) {
-            String[] renglon = {
-                String.valueOf(user.getId()),
-                String.valueOf(user.getCedula()),
-                user.getNombre(),
-                user.getCategoria(),
-                //String.valueOf(user.getIdCategoria()),
-                user.getCarrera(),
-                user.getUltimoPrestamo()
-            };
-
-            modelo.addRow(renglon);
-        }
-
-        vista.tblUsers.setModel(modelo);
-        TableColumnModel modeloColumnas = vista.tblUsers.getColumnModel();
-        modeloColumnas.removeColumn(modeloColumnas.getColumn(0));
-    }
-
-    public int crearUsuario(MUsuarios user) {
-
-        return new DAOUsuarios().insertarUsuarios(user.getCategoria(),
-                user.getCedula(),
-                user.getNombre(),
-                user.getApellido(),
-                user.getTelefono(),
-                user.getCorreo(),
-                user.getCarrera(),
-                user.getSemestre(),
-                user.getEstado());
-    }
-
-    public int updateUser(MUsuarios user) {
-        return new DAOUsuarios().actualizarUsuario(
-                user.getId(),
-                user.getCedula(),
-                user.getNombre(),
-                user.getApellido(),
-                user.getTelefono(),
-                user.getCorreo(),
-                user.getCarrera(),
-                user.getSemestre(),
-                user.getEstado(),
-                user.getCategoria());
-    }
-
-    public int elimiarUsuario(String idUsuario) {
-        return new DAOUsuarios().eliminar(Integer.parseInt(idUsuario));
     }
 
 }
