@@ -28,8 +28,10 @@ public class CSistemaBibliotecas {
         btnSelected(vista.dashboard, vista.btnMenuDashboard, "/img/ligth/iconDashboard.png");
     }
 
+    // accion realizada si cambio la sede seleccionada.
     public void filterSede(){
         String sedeSeleccionada = vista.cbxSedes.getSelectedItem().toString();
+        int indiceSeleccionado = vista.cbxSedes.getSelectedIndex();
 
         // si el panel de prestamo es visible, asigna la sede a los filtros de tabla.
         if(vista.prestamos.isShowing()){
@@ -39,11 +41,22 @@ public class CSistemaBibliotecas {
 
         }
 
+        if(vista.libros.isShowing()){
+
+        }
+
+        if(vista.sedes.isShowing()){
+            vista.controladorSedes.sede = sedeSeleccionada;
+            vista.controladorSedes.filterStateSector();
+
+            vista.controladorSedes.disableFucntionSedes();
+        }
+
     }
 
     // establece el estilo correspondiente al boton despues de retirar el mouse
     private void btnExited(JPanel panel, JLabel btn, String ico, String icoSelected){
-        System.out.println(panel.getClass() + " mostrado " + panel.isShowing());
+        //System.out.println(panel.getClass() + " mostrado " + panel.isShowing());
         if(panel.isShowing()){
             btn.setBackground(new java.awt.Color(0, 32, 96));
             btn.setIcon(new javax.swing.ImageIcon(getClass().getResource(icoSelected)));
@@ -58,8 +71,8 @@ public class CSistemaBibliotecas {
     // hace visible el panel y asigna un estilo al boton
     private void btnSelected(JPanel panel, JLabel btn, String ico){
 
+        //System.out.println("Panel " + panel.getClass() + " visible");
         panel.setVisible(true);
-        System.out.println("Panel " + panel.getClass() + " visible");
 
         btn.setBackground(new java.awt.Color(0, 32, 96));
         btn.setIcon(new javax.swing.ImageIcon(getClass().getResource(ico)));
@@ -68,33 +81,87 @@ public class CSistemaBibliotecas {
 
     // oculta el panel y restablece el estilo del boton
     private void btnDefault(JPanel panel, JLabel btn, String ico){
+        //System.out.println("Panel " + panel.getClass() + " oculto");
         panel.setVisible(false);
-        System.out.println("Panel " + panel.getClass() + " oculto");
 
         btn.setBackground(new java.awt.Color(230,255,255));
         btn.setIcon(new javax.swing.ImageIcon(getClass().getResource(ico)));
         btn.setForeground(Color.BLACK);
     }
-
-    // esilos para el menu cuando el mouse esta sobre el
+    
+    // estilos para el menu cuando el mouse esta sobre el
     private void btnHover(JLabel btn, String ico){
         btn.setBackground(new java.awt.Color(46, 144, 232));
         btn.setIcon(new javax.swing.ImageIcon(getClass().getResource(ico)));
         btn.setForeground(Color.WHITE);
     }
 
+    // Asigna el estilo y realiza la accion correspondiente a cada btn seleccionado.
+    private void actionBtnsMenu(JLabel btnSelected){
+        
+        // oculto el combobox de seleccion de sede si selecciona el modulo reportes o el de usuario
+        if(vista.btnMenuUsuarios.equals(btnSelected) || vista.btnMenuReportes.equals(btnSelected)){
+            vista.lblSede.setVisible(false); vista.cbxSedes.setVisible(false);
+        } else { // Muestra el combobox de seleccion de sede si selecciona otro modulo
+            vista.lblSede.setVisible(true); vista.cbxSedes.setVisible(true);
+        }
+
+
+        if(vista.btnMenuDashboard.equals(btnSelected)){
+            btnSelected(vista.dashboard, vista.btnMenuDashboard, "/img/ligth/iconDashboard.png");
+        } else {
+            btnDefault(vista.dashboard, vista.btnMenuDashboard, "/img/iconDashboard.png");
+        }
+        
+        if(vista.btnMenuPrestamos.equals(btnSelected)){
+            btnSelected(vista.prestamos, vista.btnMenuPrestamos, "/img/ligth/iconTime.png");
+        } else{
+            btnDefault(vista.prestamos, vista.btnMenuPrestamos, "/img/iconTime.png");
+        }
+        
+        if(vista.btnMenuLibros.equals(btnSelected)){
+            btnSelected(vista.libros, vista.btnMenuLibros, "/img/ligth/iconBooks.png");
+        } else{
+            btnDefault(vista.libros, vista.btnMenuLibros, "/img/iconBooks.png");
+        }
+
+        if(vista.btnMenuUsuarios.equals(btnSelected)){
+            btnSelected(vista.usuarios, vista.btnMenuUsuarios, "/img/ligth/iconUsers.png");
+        } else{
+            btnDefault(vista.usuarios, vista.btnMenuUsuarios, "/img/iconUsers.png");
+        }
+        
+        if(vista.btnMenuSedes.equals(btnSelected)){
+            btnSelected(vista.sedes, vista.btnMenuSedes, "/img/ligth/iconPlace.png");
+        } else{
+            btnDefault(vista.sedes, vista.btnMenuSedes, "/img/iconPlace.png");
+        }
+        
+        if(vista.btnMenuReportes.equals(btnSelected)){
+            btnSelected(vista.reportes, vista.btnMenuReportes, "/img/ligth/iconAnalytics.png");
+        } else{
+            btnDefault(vista.reportes, vista.btnMenuReportes, "/img/iconAnalytics.png");
+        }
+        
+        // ejecutamos la accion correspondiente a la sede seleccionada para ese panel
+        filterSede();
+
+    }
 
 
 
-    // Agrega todas las funcionalidades a la interfaz
+
+    //Agrega todas las funcionalidades a la interfaz
     private void actions(){
 
+        // funcionalidad para el combobox de sedes
         vista.cbxSedes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 filterSede();
             }
         });
 
+        // funcionalidad del logo
         vista.lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
             
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -106,6 +173,7 @@ public class CSistemaBibliotecas {
             }
         });
 
+        // asignaciones de funcionalidad de los botones del menu ⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️⬇️
         vista.btnMenuSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 System.exit(0);
@@ -124,13 +192,7 @@ public class CSistemaBibliotecas {
 
         vista.btnMenuDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSelected(vista.dashboard, vista.btnMenuDashboard, "/img/ligth/iconDashboard.png");
-
-                btnDefault(vista.prestamos, vista.btnMenuPrestamos, "/img/iconTime.png");
-                btnDefault(vista.libros, vista.btnMenuLibros, "/img/iconBooks.png");
-                btnDefault(vista.usuarios, vista.btnMenuUsuarios, "/img/iconUsers.png");
-                btnDefault(vista.sedes, vista.btnMenuSedes, "/img/iconPlace.png");
-                btnDefault(vista.reportes, vista.btnMenuReportes, "/img/iconAnalytics.png");
+                actionBtnsMenu(vista.btnMenuDashboard);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnHover(vista.btnMenuDashboard, "/img/ligth/iconDashboard.png");
@@ -142,13 +204,7 @@ public class CSistemaBibliotecas {
 
         vista.btnMenuPrestamos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSelected(vista.prestamos, vista.btnMenuPrestamos, "/img/ligth/iconTime.png");
-
-                btnDefault(vista.dashboard, vista.btnMenuDashboard, "/img/iconDashboard.png");
-                btnDefault(vista.libros, vista.btnMenuLibros, "/img/iconBooks.png");
-                btnDefault(vista.usuarios, vista.btnMenuUsuarios, "/img/iconUsers.png");
-                btnDefault(vista.sedes, vista.btnMenuSedes, "/img/iconPlace.png");
-                btnDefault(vista.reportes, vista.btnMenuReportes, "/img/iconAnalytics.png");
+                actionBtnsMenu(vista.btnMenuPrestamos);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnHover(vista.btnMenuPrestamos, "/img/ligth/iconTime.png");
@@ -160,13 +216,7 @@ public class CSistemaBibliotecas {
 
         vista.btnMenuLibros.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSelected(vista.libros, vista.btnMenuLibros, "/img/ligth/iconBooks.png");
-
-                btnDefault(vista.prestamos, vista.btnMenuPrestamos, "/img/iconTime.png");
-                btnDefault(vista.dashboard, vista.btnMenuDashboard, "/img/iconDashboard.png");
-                btnDefault(vista.usuarios, vista.btnMenuUsuarios, "/img/iconUsers.png");
-                btnDefault(vista.sedes, vista.btnMenuSedes, "/img/iconPlace.png");
-                btnDefault(vista.reportes, vista.btnMenuReportes, "/img/iconAnalytics.png");
+                actionBtnsMenu(vista.btnMenuLibros);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnHover(vista.btnMenuLibros, "/img/ligth/iconBooks.png");
@@ -178,13 +228,7 @@ public class CSistemaBibliotecas {
 
         vista.btnMenuUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSelected(vista.usuarios, vista.btnMenuUsuarios, "/img/ligth/iconUsers.png");
-
-                btnDefault(vista.libros, vista.btnMenuLibros, "/img/iconBooks.png");
-                btnDefault(vista.prestamos, vista.btnMenuPrestamos, "/img/iconTime.png");
-                btnDefault(vista.dashboard, vista.btnMenuDashboard, "/img/iconDashboard.png");
-                btnDefault(vista.sedes, vista.btnMenuSedes, "/img/iconPlace.png");
-                btnDefault(vista.reportes, vista.btnMenuReportes, "/img/iconAnalytics.png");
+                actionBtnsMenu(vista.btnMenuUsuarios);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnHover(vista.btnMenuUsuarios, "/img/ligth/iconUsers.png");
@@ -196,13 +240,7 @@ public class CSistemaBibliotecas {
 
         vista.btnMenuSedes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSelected(vista.sedes, vista.btnMenuSedes, "/img/ligth/iconPlace.png");
-
-                btnDefault(vista.usuarios, vista.btnMenuUsuarios, "/img/iconUsers.png");
-                btnDefault(vista.libros, vista.btnMenuLibros, "/img/iconBooks.png");
-                btnDefault(vista.prestamos, vista.btnMenuPrestamos, "/img/iconTime.png");
-                btnDefault(vista.dashboard, vista.btnMenuDashboard, "/img/iconDashboard.png");
-                btnDefault(vista.reportes, vista.btnMenuReportes, "/img/iconAnalytics.png");
+                actionBtnsMenu(vista.btnMenuSedes);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnHover(vista.btnMenuSedes, "/img/ligth/iconPlace.png");
@@ -214,13 +252,7 @@ public class CSistemaBibliotecas {
 
         vista.btnMenuReportes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSelected(vista.reportes, vista.btnMenuReportes, "/img/ligth/iconAnalytics.png");
-                
-                btnDefault(vista.sedes, vista.btnMenuSedes, "/img/iconPlace.png");
-                btnDefault(vista.usuarios, vista.btnMenuUsuarios, "/img/iconUsers.png");
-                btnDefault(vista.libros, vista.btnMenuLibros, "/img/iconBooks.png");
-                btnDefault(vista.prestamos, vista.btnMenuPrestamos, "/img/iconTime.png");
-                btnDefault(vista.dashboard, vista.btnMenuDashboard, "/img/iconDashboard.png");
+                actionBtnsMenu(vista.btnMenuReportes);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnHover(vista.btnMenuReportes, "/img/ligth/iconAnalytics.png");

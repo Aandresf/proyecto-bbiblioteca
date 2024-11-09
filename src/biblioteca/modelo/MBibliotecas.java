@@ -9,10 +9,17 @@ package biblioteca.modelo;
  * @author arnal
  */
 public class MBibliotecas {
+    private int id;
     private String descripcion;
     private String direccion;
 
     public MBibliotecas() {
+    }
+
+    public MBibliotecas(int id, String descripcion, String direccion) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.direccion = direccion;
     }
 
     public MBibliotecas(String descripcion, String direccion) {
@@ -34,6 +41,14 @@ public class MBibliotecas {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 

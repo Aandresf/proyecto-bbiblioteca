@@ -108,7 +108,7 @@ public class VUsuarios extends javax.swing.JPanel {
         lblCedula.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblCedula.setText("CEDULA");
 
-        txtCedula.setBackground(new java.awt.Color(255, 255, 204));
+        txtCedula.setBackground(new java.awt.Color(255, 255, 244));
         txtCedula.setBorder(null);
         txtCedula.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtCedula.setOpaque(true);
@@ -116,7 +116,7 @@ public class VUsuarios extends javax.swing.JPanel {
         lblNombre.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblNombre.setText("NOMBRES");
 
-        txtNombre.setBackground(new java.awt.Color(255, 255, 204));
+        txtNombre.setBackground(new java.awt.Color(255, 255, 244));
         txtNombre.setBorder(null);
         txtNombre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNombre.setOpaque(true);
@@ -124,7 +124,7 @@ public class VUsuarios extends javax.swing.JPanel {
         lblApellido.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblApellido.setText("APELLIDOS");
 
-        txtApellido.setBackground(new java.awt.Color(255, 255, 204));
+        txtApellido.setBackground(new java.awt.Color(255, 255, 244));
         txtApellido.setBorder(null);
         txtApellido.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtApellido.setOpaque(true);
@@ -132,7 +132,7 @@ public class VUsuarios extends javax.swing.JPanel {
         lblTelefono.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         lblTelefono.setText("TELEFONO");
 
-        txtTelefono.setBackground(new java.awt.Color(255, 255, 204));
+        txtTelefono.setBackground(new java.awt.Color(255, 255, 244));
         txtTelefono.setBorder(null);
         txtTelefono.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtTelefono.setOpaque(true);
@@ -140,7 +140,7 @@ public class VUsuarios extends javax.swing.JPanel {
         lblCorreo.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         lblCorreo.setText("CORREO");
 
-        txtCorreo.setBackground(new java.awt.Color(255, 255, 204));
+        txtCorreo.setBackground(new java.awt.Color(255, 255, 244));
         txtCorreo.setBorder(null);
         txtCorreo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtCorreo.setOpaque(true);
@@ -148,8 +148,7 @@ public class VUsuarios extends javax.swing.JPanel {
         lblCategoria.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
         lblCategoria.setText("CATEGORIA");
 
-        cbxCategoria.setBackground(new java.awt.Color(255, 255, 204));
-        cbxCategoria.setEditable(true);
+        cbxCategoria.setBackground(new java.awt.Color(255, 255, 244));
         cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxCategoria.setBorder(null);
         cbxCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -157,8 +156,7 @@ public class VUsuarios extends javax.swing.JPanel {
         lblCurso.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         lblCurso.setText("CURSO");
 
-        cbxCarrera.setBackground(new java.awt.Color(255, 255, 204));
-        cbxCarrera.setEditable(true);
+        cbxCarrera.setBackground(new java.awt.Color(255, 255, 244));
         cbxCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbxCarrera.setBorder(null);
         cbxCarrera.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -195,7 +193,7 @@ public class VUsuarios extends javax.swing.JPanel {
         lblSemestre.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
         lblSemestre.setText("SEMESTRE");
 
-        txtSemestre.setBackground(new java.awt.Color(255, 255, 204));
+        txtSemestre.setBackground(new java.awt.Color(255, 255, 244));
         txtSemestre.setBorder(null);
         txtSemestre.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtSemestre.setOpaque(true);
@@ -346,6 +344,7 @@ public class VUsuarios extends javax.swing.JPanel {
         lblTitleCurso.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         lblTitleCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitleCurso.setText("NUEVO CURSO");
+        lblTitleCurso.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 255, 255), 1, true));
 
         btnLimpiarCurso.setFont(new java.awt.Font("Roboto Medium", 2, 18)); // NOI18N
         btnLimpiarCurso.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -413,13 +412,15 @@ public class VUsuarios extends javax.swing.JPanel {
         fromCreateCurso.getContentPane().setLayout(fromCreateCursoLayout);
         fromCreateCursoLayout.setHorizontalGroup(
             fromCreateCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(fromCreateCursoLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         fromCreateCursoLayout.setVerticalGroup(
             fromCreateCursoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(fromCreateCursoLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         fromCreateCurso.getAccessibleContext().setAccessibleParent(frameFormUsuarios);

@@ -402,6 +402,7 @@ public void cleanFormPrestamoRegister(){
 
     public void btnCancelCreatePrestamoClick(){
                 vista.formCreatePrestamo.setVisible(false);
+                vista.setEnabled(true);
                 cleanFormPrestamoRegister();
     }
 
@@ -441,8 +442,8 @@ public void cleanFormPrestamoRegister(){
 
         vista.checkEstado.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                        filterStatePrestamo();
-                    }
+                filterStatePrestamo();
+            }
         });
 
         vista.txtUserSearch.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -460,8 +461,10 @@ public void cleanFormPrestamoRegister(){
         vista.txtSearchPrestamo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 ((AbstractDocument) vista.txtSearchPrestamo.getDocument()).setDocumentFilter(new Validaciones.filtroAlphaNumerico());
-        
-        filterStatePrestamo();}
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {        
+                filterStatePrestamo();
+            }
         });
 
         
@@ -497,6 +500,7 @@ public void cleanFormPrestamoRegister(){
 
         vista.btnCrearPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vista.formCreatePrestamo.setLocationRelativeTo(vista);
                 vista.formCreatePrestamo.setVisible(true);
             }
         });

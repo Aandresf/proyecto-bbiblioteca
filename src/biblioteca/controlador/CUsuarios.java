@@ -115,6 +115,7 @@ public final class CUsuarios {
 
         if (id >= 0) {
             limpiar();
+            vista.frameFormUsuarios.setLocationRelativeTo(vista);
             vista.frameFormUsuarios.setVisible(true);
             cargarCarreras();
             cargarCategorias();
@@ -145,6 +146,7 @@ public final class CUsuarios {
 
     private void cargarFormCrear() {
         limpiar();
+        vista.frameFormUsuarios.setLocationRelativeTo(vista);
         vista.frameFormUsuarios.setVisible(true);
         cargarCarreras();
         cargarCategorias();
@@ -397,6 +399,7 @@ public final class CUsuarios {
         vista.lblAddCurso.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 vista.txtCurso.setText("");
+                vista.fromCreateCurso.setLocationRelativeTo(vista.frameFormUsuarios);
                 vista.fromCreateCurso.setVisible(true);
             }
         });

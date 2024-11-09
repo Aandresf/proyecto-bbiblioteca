@@ -5,12 +5,14 @@
 package biblioteca.vista;
 
 import biblioteca.controlador.*;
+import java.awt.Point;
 
 /**
  *
  * @author arnal
  */
 public class SistemaBibliotecas extends javax.swing.JFrame {
+    private Point initialClick;
     
     public VDashboard dashboard;
     public VPrestamos prestamos;
@@ -18,6 +20,7 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
     public VLibros libros;
     public VUsuarios usuarios;
     public VSedes sedes;
+    public CSedes controladorSedes;
     public VReportes reportes;
     
 
@@ -25,6 +28,7 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
      * Creates new form SistemaBibliotecas
      */
     public SistemaBibliotecas() {
+        
         initComponents();
         
         dashboard = new VDashboard();
@@ -32,7 +36,8 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         prestamos = controladorPrestamos.vista;
         libros = new VLibros();
         usuarios = new CUsuarios(new VUsuarios()).vista;
-        sedes = new VSedes();
+        controladorSedes = new CSedes(new VSedes());
+        sedes = controladorSedes.vista;
         reportes = new VReportes();
         
         // Agregamoms al desktopPane
@@ -94,6 +99,16 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         pnlHeader.setMaximumSize(new java.awt.Dimension(2147483647, 30));
         pnlHeader.setMinimumSize(new java.awt.Dimension(1000, 30));
         pnlHeader.setPreferredSize(new java.awt.Dimension(1000, 30));
+        pnlHeader.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
+        pnlHeader.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
         pnlHeader.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblSede.setBackground(new java.awt.Color(0, 102, 102));
@@ -244,6 +259,27 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        // TODO add your handling code here:
+        
+        initialClick = evt.getPoint();
+        getComponentAt(initialClick);
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        // TODO add your handling code here:
+        
+        int thisX = getLocation().x;
+        int thisY = getLocation().y;
+        
+        int xMoved = evt.getX() - initialClick.x;
+        int yMoved = evt.getY() - initialClick.y;
+        
+        int x = thisX + xMoved;
+        int y = thisY + yMoved;
+        setLocation(x, y);
+    }//GEN-LAST:event_formMouseMoved
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel btnMenuDashboard;
@@ -258,7 +294,7 @@ public class SistemaBibliotecas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     public javax.swing.JLabel lblLogo;
-    private javax.swing.JLabel lblSede;
+    public javax.swing.JLabel lblSede;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlHeader;
     public javax.swing.JPanel pnlMain;
